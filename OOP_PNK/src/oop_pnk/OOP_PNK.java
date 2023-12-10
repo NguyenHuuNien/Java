@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class OOP_PNK {
     public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
         int x = sc.nextInt();
         int y = sc.nextInt();
         System.out.println("Tong: " + (x+y));
