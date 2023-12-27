@@ -9,4 +9,7 @@
     <fullyQualifiedTypeName name="baiTapveStaticVaFinal.MyClass.ClassManagement"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="baiTapveStaticVaFinal.MyClass"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="baiThucHanh2.GradeBook"/>
+    <fullyQualifiedTypeName name="baiThucHanh2.Employee"/>
 </qualifiedTypeNameHistroy>
