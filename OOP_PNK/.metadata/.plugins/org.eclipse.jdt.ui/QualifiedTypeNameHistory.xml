@@ -9,7 +9,15 @@
     <fullyQualifiedTypeName name="baiTapveStaticVaFinal.MyClass.ClassManagement"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
     <fullyQualifiedTypeName name="baiTapveStaticVaFinal.MyClass"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="baiThucHanh2.GradeBook"/>
     <fullyQualifiedTypeName name="baiThucHanh2.Employee"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="btth_ThuaKe.Nguoi"/>
+    <fullyQualifiedTypeName name="java.lang.Module"/>
+    <fullyQualifiedTypeName name="btth03.MovablePoint"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="btth03.Student"/>
+    <fullyQualifiedTypeName name="btth03.Staff"/>
+    <fullyQualifiedTypeName name="btth03.Rectangle"/>
+    <fullyQualifiedTypeName name="btth03.Square"/>
 </qualifiedTypeNameHistroy>
