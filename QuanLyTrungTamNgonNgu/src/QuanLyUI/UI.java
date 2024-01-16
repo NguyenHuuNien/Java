@@ -48,19 +48,26 @@ public class UI extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
-        pnSpace3 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        pnSpace2 = new javax.swing.JPanel();
+        pnHyuNie = new javax.swing.JPanel();
+        pnTable = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quan Ly Trung Tam Ngoai Ngu");
-        setPreferredSize(new java.awt.Dimension(700, 800));
+        setPreferredSize(new java.awt.Dimension(700, 810));
         setResizable(false);
-        setSize(new java.awt.Dimension(700, 800));
-        getContentPane().setLayout(new java.awt.FlowLayout(1, 0, 0));
+        setSize(new java.awt.Dimension(700, 810));
+        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
 
         pnTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
-        pnTitle.setPreferredSize(new java.awt.Dimension(700, 50));
+        pnTitle.setPreferredSize(new java.awt.Dimension(680, 50));
         pnTitle.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setFont(new java.awt.Font("Liberation Serif", 1, 30)); // NOI18N
@@ -71,18 +78,19 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(pnTitle);
 
-        pnSpace.setLayout(new java.awt.FlowLayout(1, 5, 6));
+        pnSpace.setPreferredSize(new java.awt.Dimension(200, 15));
+        pnSpace.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 6));
         getContentPane().add(pnSpace);
 
         pnInfor.setMinimumSize(new java.awt.Dimension(1, 1));
         pnInfor.setPreferredSize(new java.awt.Dimension(700, 35));
-        pnInfor.setLayout(new java.awt.GridLayout());
+        pnInfor.setLayout(new java.awt.GridLayout(1, 0));
 
-        jPanel3.setLayout(new java.awt.FlowLayout(0, 10, 0));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 0));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Chọn ngôn ngữ:");
+        jLabel3.setText("Chọn khóa học ngôn ngữ:");
         jPanel3.add(jLabel3);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
@@ -96,7 +104,7 @@ public class UI extends javax.swing.JFrame {
 
         pnInfor.add(jPanel3);
 
-        jPanel4.setLayout(new java.awt.FlowLayout(2));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         jLabel2.setText("Xin chào: HyuNie");
         jPanel4.add(jLabel2);
@@ -114,20 +122,26 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(pnInfor);
 
-        pnSpace1.setLayout(new java.awt.FlowLayout(1, 5, 6));
+        pnSpace1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 6));
         getContentPane().add(pnSpace1);
 
-        pnTitleKhoaHoc.setPreferredSize(new java.awt.Dimension(700, 32));
-        pnTitleKhoaHoc.setLayout(new java.awt.FlowLayout(1, 0, 0));
+        pnTitleKhoaHoc.setPreferredSize(new java.awt.Dimension(700, 43));
+        pnTitleKhoaHoc.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel4.setText("Các khóa học Tiếng Việt");
+        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         pnTitleKhoaHoc.add(jLabel4);
 
         getContentPane().add(pnTitleKhoaHoc);
 
-        pnSapXep.setPreferredSize(new java.awt.Dimension(700, 40));
-        pnSapXep.setLayout(new java.awt.FlowLayout(1, 5, 12));
+        pnSapXep.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        pnSapXep.setPreferredSize(new java.awt.Dimension(650, 80));
+        pnSapXep.setRequestFocusEnabled(false);
+        pnSapXep.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 8));
 
         jLabel7.setText("Tìm kiếm:");
         pnSapXep.add(jLabel7);
@@ -140,10 +154,10 @@ public class UI extends javax.swing.JFrame {
         });
         pnSapXep.add(jTextField1);
 
-        jLabel5.setText("                  Sắp xếp theo:");
+        jLabel5.setText("             Sắp xếp theo:");
         pnSapXep.add(jLabel5);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên giảng viên", "Thời gian học", "Số lượng đăng ký", "Giá" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã lớp học", "Tên lớp học", "Thời gian học", "Số lượng đăng ký", "Giá" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -151,7 +165,7 @@ public class UI extends javax.swing.JFrame {
         });
         pnSapXep.add(jComboBox2);
 
-        jLabel6.setText("                 Cách thức:");
+        jLabel6.setText("          Cách thức:");
         pnSapXep.add(jLabel6);
 
         buttonGroup1.add(jRadioButton1);
@@ -173,15 +187,78 @@ public class UI extends javax.swing.JFrame {
         });
         pnSapXep.add(jRadioButton2);
 
+        jButton2.setText("OK");
+        pnSapXep.add(jButton2);
+
         getContentPane().add(pnSapXep);
 
-        pnSpace3.setLayout(new java.awt.FlowLayout(1, 0, 10));
+        pnSpace2.setPreferredSize(new java.awt.Dimension(680, 35));
+        pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
+        getContentPane().add(pnSpace2);
 
-        jButton2.setText("OK");
-        pnSpace3.add(jButton2);
+        pnTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bảng thành viên lớp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 14))); // NOI18N
+        pnTable.setPreferredSize(new java.awt.Dimension(680, 460));
+        pnTable.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
 
-        getContentPane().add(pnSpace3);
-        getContentPane().add(jDesktopPane1);
+        jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 350));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Họ và Tên", "Chức vụ", "Số điện thoại", "Quê quán", "Học lực"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jTable1.setPreferredSize(new java.awt.Dimension(500, 350));
+        jTable1.setRowHeight(30);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.setShowGrid(true);
+        jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(0).setPreferredWidth(15);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(2).setPreferredWidth(30);
+            jTable1.getColumnModel().getColumn(3).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(4).setPreferredWidth(80);
+            jTable1.getColumnModel().getColumn(5).setPreferredWidth(30);
+        }
+
+        pnTable.add(jScrollPane1);
+
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0, 100, 0));
+
+        jButton3.setText("Thêm");
+        jPanel1.add(jButton3);
+
+        jButton4.setText("Chi tiết");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+
+        jButton5.setText("Xóa");
+        jPanel1.add(jButton5);
+
+        pnTable.add(jPanel1);
+
+        pnHyuNie.add(pnTable);
+
+        getContentPane().add(pnHyuNie);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -205,6 +282,10 @@ public class UI extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,9 +326,11 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -255,16 +338,21 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel pnHyuNie;
     private javax.swing.JPanel pnInfor;
     private javax.swing.JPanel pnSapXep;
     private javax.swing.JPanel pnSpace;
     private javax.swing.JPanel pnSpace1;
-    private javax.swing.JPanel pnSpace3;
+    private javax.swing.JPanel pnSpace2;
+    private javax.swing.JPanel pnTable;
     private javax.swing.JPanel pnTitle;
     private javax.swing.JPanel pnTitleKhoaHoc;
     // End of variables declaration//GEN-END:variables
