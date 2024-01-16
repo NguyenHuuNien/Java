@@ -31,7 +31,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         jList1 = new javax.swing.JList<>();
         jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(680, 460));
@@ -43,26 +42,19 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         jScrollPane1.setPreferredSize(new java.awt.Dimension(500, 350));
 
         jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        jList1.setPreferredSize(new java.awt.Dimension(400, 400));
         jScrollPane1.setViewportView(jList1);
 
         pnTable.add(jScrollPane1);
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 100, 0));
 
-        jButton3.setText("Thêm");
+        jButton3.setText("Thêm khóa học");
         jPanel1.add(jButton3);
-
-        jButton4.setText("Chi tiết");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4);
 
         jButton5.setText("Xóa");
         jPanel1.add(jButton5);
@@ -91,14 +83,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;

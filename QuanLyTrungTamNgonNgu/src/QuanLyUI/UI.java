@@ -51,13 +51,6 @@ public class UI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         pnSpace2 = new javax.swing.JPanel();
         pnHyuNie = new javax.swing.JPanel();
-        pnTable = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quan Ly Trung Tam Ngoai Ngu");
@@ -192,72 +185,9 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(pnSapXep);
 
-        pnSpace2.setPreferredSize(new java.awt.Dimension(680, 35));
+        pnSpace2.setPreferredSize(new java.awt.Dimension(699, 35));
         pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
         getContentPane().add(pnSpace2);
-
-        pnTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bảng thành viên lớp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 14))); // NOI18N
-        pnTable.setPreferredSize(new java.awt.Dimension(680, 460));
-        pnTable.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
-
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(600, 350));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Họ và Tên", "Chức vụ", "Số điện thoại", "Quê quán", "Học lực"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setPreferredSize(new java.awt.Dimension(500, 350));
-        jTable1.setRowHeight(30);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable1.setShowGrid(true);
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setPreferredWidth(15);
-            jTable1.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(2).setPreferredWidth(30);
-            jTable1.getColumnModel().getColumn(3).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(4).setPreferredWidth(80);
-            jTable1.getColumnModel().getColumn(5).setPreferredWidth(30);
-        }
-
-        pnTable.add(jScrollPane1);
-
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0, 100, 0));
-
-        jButton3.setText("Thêm");
-        jPanel1.add(jButton3);
-
-        jButton4.setText("Chi tiết");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4);
-
-        jButton5.setText("Xóa");
-        jPanel1.add(jButton5);
-
-        pnTable.add(jPanel1);
-
-        pnHyuNie.add(pnTable);
-
         getContentPane().add(pnHyuNie);
 
         pack();
@@ -282,10 +212,6 @@ public class UI extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,9 +252,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -338,13 +261,10 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel pnHyuNie;
     private javax.swing.JPanel pnInfor;
@@ -352,7 +272,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel pnSpace;
     private javax.swing.JPanel pnSpace1;
     private javax.swing.JPanel pnSpace2;
-    private javax.swing.JPanel pnTable;
     private javax.swing.JPanel pnTitle;
     private javax.swing.JPanel pnTitleKhoaHoc;
     // End of variables declaration//GEN-END:variables
