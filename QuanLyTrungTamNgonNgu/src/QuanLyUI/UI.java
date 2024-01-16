@@ -26,6 +26,7 @@ public class UI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnTitle = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pnSpace = new javax.swing.JPanel();
@@ -36,41 +37,55 @@ public class UI extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        pnSpace1 = new javax.swing.JPanel();
         pnTitleKhoaHoc = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        pnSapXep = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel6 = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        pnSpace3 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quan Ly Trung Tam Ngoai Ngu");
         setPreferredSize(new java.awt.Dimension(700, 800));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 800));
-        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        getContentPane().setLayout(new java.awt.FlowLayout(1, 0, 0));
 
         pnTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         pnTitle.setPreferredSize(new java.awt.Dimension(700, 50));
         pnTitle.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Liberation Serif", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Liberation Serif", 1, 30)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 51, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Trung tam ngoai ngu HyuNie");
+        jLabel1.setText("Trung tâm ngoại ngữ HyuNie");
         pnTitle.add(jLabel1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnTitle);
 
-        pnSpace.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 6));
+        pnSpace.setLayout(new java.awt.FlowLayout(1, 5, 6));
         getContentPane().add(pnSpace);
 
         pnInfor.setMinimumSize(new java.awt.Dimension(1, 1));
         pnInfor.setPreferredSize(new java.awt.Dimension(700, 35));
         pnInfor.setLayout(new java.awt.GridLayout());
 
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 0));
+        jPanel3.setLayout(new java.awt.FlowLayout(0, 10, 0));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Chon ngon ngu:");
+        jLabel3.setText("Chọn ngôn ngữ:");
         jPanel3.add(jLabel3);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tieng Viet", "Tieng Anh", "Tieng Trung", "Tieng Nhat", "Tieng Han" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
         jComboBox1.setPreferredSize(new java.awt.Dimension(115, 35));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,9 +96,9 @@ public class UI extends javax.swing.JFrame {
 
         pnInfor.add(jPanel3);
 
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanel4.setLayout(new java.awt.FlowLayout(2));
 
-        jLabel2.setText("Xin Chao: HyuNie");
+        jLabel2.setText("Xin chào: HyuNie");
         jPanel4.add(jLabel2);
 
         jButton1.setFont(new java.awt.Font("Liberation Sans Narrow", 2, 12)); // NOI18N
@@ -99,9 +114,74 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(pnInfor);
 
-        pnTitleKhoaHoc.setPreferredSize(new java.awt.Dimension(700, 30));
-        pnTitleKhoaHoc.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
+        pnSpace1.setLayout(new java.awt.FlowLayout(1, 5, 6));
+        getContentPane().add(pnSpace1);
+
+        pnTitleKhoaHoc.setPreferredSize(new java.awt.Dimension(700, 32));
+        pnTitleKhoaHoc.setLayout(new java.awt.FlowLayout(1, 0, 0));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
+        jLabel4.setText("Các khóa học Tiếng Việt");
+        pnTitleKhoaHoc.add(jLabel4);
+
         getContentPane().add(pnTitleKhoaHoc);
+
+        pnSapXep.setPreferredSize(new java.awt.Dimension(700, 40));
+        pnSapXep.setLayout(new java.awt.FlowLayout(1, 5, 12));
+
+        jLabel7.setText("Tìm kiếm:");
+        pnSapXep.add(jLabel7);
+
+        jTextField1.setPreferredSize(new java.awt.Dimension(120, 22));
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        pnSapXep.add(jTextField1);
+
+        jLabel5.setText("                  Sắp xếp theo:");
+        pnSapXep.add(jLabel5);
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tên giảng viên", "Thời gian học", "Số lượng đăng ký", "Giá" }));
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
+        pnSapXep.add(jComboBox2);
+
+        jLabel6.setText("                 Cách thức:");
+        pnSapXep.add(jLabel6);
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Tăng");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        pnSapXep.add(jRadioButton1);
+
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Giảm");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        pnSapXep.add(jRadioButton2);
+
+        getContentPane().add(pnSapXep);
+
+        pnSpace3.setLayout(new java.awt.FlowLayout(1, 0, 10));
+
+        jButton2.setText("OK");
+        pnSpace3.add(jButton2);
+
+        getContentPane().add(pnSpace3);
+        getContentPane().add(jDesktopPane1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -109,6 +189,22 @@ public class UI extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,15 +242,29 @@ public class UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel pnInfor;
+    private javax.swing.JPanel pnSapXep;
     private javax.swing.JPanel pnSpace;
+    private javax.swing.JPanel pnSpace1;
+    private javax.swing.JPanel pnSpace3;
     private javax.swing.JPanel pnTitle;
     private javax.swing.JPanel pnTitleKhoaHoc;
     // End of variables declaration//GEN-END:variables
