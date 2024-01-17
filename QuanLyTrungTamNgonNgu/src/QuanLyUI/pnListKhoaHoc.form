@@ -111,6 +111,11 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChiTietActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="txtGia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gi&#xe1;: 10000 VND"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

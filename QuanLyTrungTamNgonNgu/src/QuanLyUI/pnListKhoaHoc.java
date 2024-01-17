@@ -1,13 +1,16 @@
 package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
+import javax.swing.JPanel;
 
 public class pnListKhoaHoc extends javax.swing.JPanel {
     private KhoaHoc kh;
-    public pnListKhoaHoc(KhoaHoc kh) {
+    private JPanel pnHyuNie;
+    public pnListKhoaHoc(KhoaHoc kh, JPanel pnHyuNie) {
         initComponents();
         this.kh = kh;
         setData();
+        this.pnHyuNie = pnHyuNie;
     }
 
     @SuppressWarnings("unchecked")
@@ -23,6 +26,7 @@ public class pnListKhoaHoc extends javax.swing.JPanel {
         txtNgay = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         btnChiTiet = new javax.swing.JButton();
+        txtGia = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(650, 65));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
@@ -71,12 +75,18 @@ public class pnListKhoaHoc extends javax.swing.JPanel {
         });
         jPanel3.add(btnChiTiet);
 
+        txtGia.setText("Giá: 10000 VND");
+        jPanel3.add(txtGia);
+
         add(jPanel3);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChiTietActionPerformed
         pnThanhVien pnTV = new pnThanhVien(kh);
-        
+        pnHyuNie.removeAll();
+        pnHyuNie.add(pnTV);
+        pnHyuNie.revalidate();
+        pnHyuNie.repaint();
     }//GEN-LAST:event_btnChiTietActionPerformed
 
 
@@ -86,6 +96,7 @@ public class pnListKhoaHoc extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel txtGia;
     private javax.swing.JLabel txtNameGV;
     private javax.swing.JLabel txtNameKH;
     private javax.swing.JLabel txtNgay;
@@ -97,6 +108,7 @@ public class pnListKhoaHoc extends javax.swing.JPanel {
         txtNameGV.setText("Giảng viên: " + kh.getGiangVien().getName());
         txtSL.setText("Số lượng: " + kh.getSoLuong()[0] + "/" + kh.getSoLuong()[1]);
         txtNgay.setText("Ngay: " + kh.getThoiGian());
+        txtGia.setText("Giá: " + kh.getGia() + "VND");
         this.repaint();
     }
 }

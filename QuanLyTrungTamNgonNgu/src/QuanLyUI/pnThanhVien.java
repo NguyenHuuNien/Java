@@ -1,6 +1,9 @@
 package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
+import java.util.List;
+import ObjectClass.HocVien;
+import javax.swing.table.DefaultTableModel;
 
 public class pnThanhVien extends javax.swing.JPanel {
     private KhoaHoc kh;
@@ -11,6 +14,18 @@ public class pnThanhVien extends javax.swing.JPanel {
     }
     private void SetupTable(){
         Object[][] data = new Object[6][kh.getSoLuong()[0]];
+        List<HocVien> dsHV = kh.getDSHocVien();
+        for(int i = 0; i < dsHV.size(); i++){
+            data[0][i] = dsHV.get(i).getID();
+            data[1][i] = dsHV.get(i).getName();
+            data[2][i] = dsHV.get(i).getTuoi();
+            data[3][i] = dsHV.get(i).getSoDienThoai();
+            data[4][i] = dsHV.get(i).getQueQuan();
+            data[5][i] = dsHV.get(i).getHocLuc();
+        }
+        String[] colName = {"ID","Họ và tên","Tuổi","Số điện thoại","Quê quán","Học lực"};
+        DefaultTableModel dfTable = new DefaultTableModel(data,colName);
+        tbThanhVien.setModel(dfTable);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,11 +53,11 @@ public class pnThanhVien extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Họ và Tên", "Chức vụ", "Số điện thoại", "Quê quán", "Học lực"
+                "ID", "Họ và Tên", "Tuổi", "Số điện thoại", "Quê quán", "Học lực"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

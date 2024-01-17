@@ -77,7 +77,7 @@
                   <Table columnCount="6" rowCount="4">
                     <Column editable="true" title="ID" type="java.lang.String"/>
                     <Column editable="true" title="H&#x1ecd; v&#xe0; T&#xea;n" type="java.lang.String"/>
-                    <Column editable="true" title="Ch&#x1ee9;c v&#x1ee5;" type="java.lang.String"/>
+                    <Column editable="true" title="Tu&#x1ed5;i" type="java.lang.Integer"/>
                     <Column editable="true" title="S&#x1ed1; &#x111;i&#x1ec7;n tho&#x1ea1;i" type="java.lang.String"/>
                     <Column editable="true" title="Qu&#xea; qu&#xe1;n" type="java.lang.String"/>
                     <Column editable="true" title="H&#x1ecd;c l&#x1ef1;c" type="java.lang.String"/>

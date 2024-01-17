@@ -1,13 +1,15 @@
 package ObjectClass;
 
-public class HocVien extends People{
+import java.io.Serializable;
+
+public class HocVien extends People implements Serializable{
     private String HocLuc;
 
     public HocVien() {
         super();
     }
 
-    public HocVien(String ID, String Name, int Tuoi, String SoDienThoai, String QueQuan, String HocLuc) {
+    public HocVien(String Name, int Tuoi, String SoDienThoai, String QueQuan, String HocLuc) {
         super(Name, Tuoi, SoDienThoai, QueQuan);
         this.HocLuc = HocLuc;
     }

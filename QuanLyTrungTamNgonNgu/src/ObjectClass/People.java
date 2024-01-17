@@ -1,6 +1,8 @@
 package ObjectClass;
 
-public class People {
+import java.io.Serializable;
+
+public class People implements Serializable{
     private String ID;
     private String Name;
     private int Tuoi;

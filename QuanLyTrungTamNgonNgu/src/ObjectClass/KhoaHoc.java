@@ -1,10 +1,13 @@
 package ObjectClass;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class KhoaHoc {
+public class KhoaHoc implements Serializable{
+    private String NgonNgu;
     private String tenKhoaHoc;
+    private int gia;
     private List<HocVien> dsHocVien;
     private GiangVien giangVien;
     private int[] soLuong = new int[2];
@@ -14,10 +17,12 @@ public class KhoaHoc {
         dsHocVien = new ArrayList<>();
     }
 
-    public KhoaHoc(String tenKhoaHoc, GiangVien giangVien,int maxHocVien,String thoiGian) {
+    public KhoaHoc(String NgonNgu, String tenKhoaHoc,int Gia, GiangVien giangVien,int maxHocVien,String thoiGian) {
+        this.NgonNgu = NgonNgu;
         this.tenKhoaHoc = tenKhoaHoc;
         this.giangVien = giangVien;
         this.thoiGian = thoiGian;
+        this.gia = Gia;
         this.soLuong[0] = 0;        
         this.soLuong[1] = maxHocVien;
         dsHocVien = new ArrayList<>();
@@ -31,6 +36,26 @@ public class KhoaHoc {
         }else{
             return false;
         }
+    }
+
+    public int getGia() {
+        return gia;
+    }
+
+    public void setGia(int gia) {
+        this.gia = gia;
+    }
+
+    public String getNgonNgu() {
+        return NgonNgu;
+    }
+
+    public void setNgonNgu(String NgonNgu) {
+        this.NgonNgu = NgonNgu;
+    }
+    
+    public List<HocVien> getDSHocVien(){
+        return dsHocVien;
     }
     public int[] getSoLuong(){
         return soLuong;

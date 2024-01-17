@@ -1,6 +1,8 @@
 package ObjectClass;
 
-public class GiangVien extends People{
+import java.io.Serializable;
+
+public class GiangVien extends People implements Serializable{
     private String TrinhDo;
 
     public GiangVien(String TrinhDo) {
