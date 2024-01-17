@@ -118,6 +118,7 @@ public class UI extends javax.swing.JFrame {
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
 
         jLabel2.setText("Xin chào: HyuNie");
+        jLabel2.setPreferredSize(new java.awt.Dimension(120, 16));
         jPanel4.add(jLabel2);
 
         jButton1.setFont(new java.awt.Font("Liberation Sans Narrow", 2, 12)); // NOI18N
@@ -140,10 +141,11 @@ public class UI extends javax.swing.JFrame {
         pnTitleKhoaHoc.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Các khóa học Tiếng Việt");
         jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel4.setPreferredSize(new java.awt.Dimension(300, 32));
         jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
         pnTitleKhoaHoc.add(jLabel4);
 
@@ -155,6 +157,7 @@ public class UI extends javax.swing.JFrame {
         pnSapXep.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 8));
 
         jLabel7.setText("Tìm kiếm:");
+        jLabel7.setPreferredSize(new java.awt.Dimension(60, 16));
         pnSapXep.add(jLabel7);
 
         jTextField1.setPreferredSize(new java.awt.Dimension(120, 22));
@@ -165,7 +168,9 @@ public class UI extends javax.swing.JFrame {
         });
         pnSapXep.add(jTextField1);
 
-        jLabel5.setText("             Sắp xếp theo:");
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("       Sắp xếp theo:");
+        jLabel5.setPreferredSize(new java.awt.Dimension(100, 16));
         pnSapXep.add(jLabel5);
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã lớp học", "Tên lớp học", "Thời gian học", "Số lượng đăng ký", "Giá" }));
@@ -176,12 +181,13 @@ public class UI extends javax.swing.JFrame {
         });
         pnSapXep.add(jComboBox2);
 
-        jLabel6.setText("          Cách thức:");
+        jLabel6.setText("    Cách thức:");
         pnSapXep.add(jLabel6);
 
         buttonGroup1.add(jRadioButton1);
         jRadioButton1.setSelected(true);
         jRadioButton1.setText("Tăng");
+        jRadioButton1.setPreferredSize(new java.awt.Dimension(60, 21));
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton1ActionPerformed(evt);
@@ -191,6 +197,7 @@ public class UI extends javax.swing.JFrame {
 
         buttonGroup1.add(jRadioButton2);
         jRadioButton2.setText("Giảm");
+        jRadioButton2.setPreferredSize(new java.awt.Dimension(60, 21));
         jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton2ActionPerformed(evt);

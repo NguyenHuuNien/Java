@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 public class pnKhoaHoc extends javax.swing.JPanel {
@@ -14,7 +15,17 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         initComponents();
         dsListKH = ds;
         SetupTable();
+        setSizeColumn();
         this.pnHyuNie = pnHyuNie;
+    }
+    private void setSizeColumn(){
+        TableColumnModel columnModel = tbKhoaHoc.getColumnModel();
+        columnModel.getColumn(0).setPreferredWidth(20);
+        columnModel.getColumn(1).setPreferredWidth(150);
+        columnModel.getColumn(2).setPreferredWidth(125);
+        columnModel.getColumn(3).setPreferredWidth(30);
+        columnModel.getColumn(4).setPreferredWidth(35);
+        columnModel.getColumn(5).setPreferredWidth(50);
     }
     private void SetupTable(){
         Object[][] data = new Object[dsListKH.size()][6];
@@ -57,7 +68,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 100, 0));
 
-        jScrollPane2.setPreferredSize(new java.awt.Dimension(600, 350));
+        jScrollPane2.setPreferredSize(new java.awt.Dimension(650, 350));
 
         tbKhoaHoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -85,16 +96,22 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        tbKhoaHoc.setPreferredSize(new java.awt.Dimension(500, 350));
+        tbKhoaHoc.setPreferredSize(new java.awt.Dimension(550, 350));
         tbKhoaHoc.setRowHeight(50);
         jScrollPane2.setViewportView(tbKhoaHoc);
         if (tbKhoaHoc.getColumnModel().getColumnCount() > 0) {
-            tbKhoaHoc.getColumnModel().getColumn(0).setPreferredWidth(50);
-            tbKhoaHoc.getColumnModel().getColumn(1).setPreferredWidth(100);
-            tbKhoaHoc.getColumnModel().getColumn(2).setPreferredWidth(100);
-            tbKhoaHoc.getColumnModel().getColumn(3).setPreferredWidth(50);
-            tbKhoaHoc.getColumnModel().getColumn(4).setPreferredWidth(50);
-            tbKhoaHoc.getColumnModel().getColumn(5).setPreferredWidth(75);
+            tbKhoaHoc.getColumnModel().getColumn(0).setResizable(false);
+            tbKhoaHoc.getColumnModel().getColumn(0).setPreferredWidth(20);
+            tbKhoaHoc.getColumnModel().getColumn(1).setResizable(false);
+            tbKhoaHoc.getColumnModel().getColumn(1).setPreferredWidth(150);
+            tbKhoaHoc.getColumnModel().getColumn(2).setResizable(false);
+            tbKhoaHoc.getColumnModel().getColumn(2).setPreferredWidth(135);
+            tbKhoaHoc.getColumnModel().getColumn(3).setResizable(false);
+            tbKhoaHoc.getColumnModel().getColumn(3).setPreferredWidth(20);
+            tbKhoaHoc.getColumnModel().getColumn(4).setResizable(false);
+            tbKhoaHoc.getColumnModel().getColumn(4).setPreferredWidth(35);
+            tbKhoaHoc.getColumnModel().getColumn(5).setResizable(false);
+            tbKhoaHoc.getColumnModel().getColumn(5).setPreferredWidth(50);
         }
 
         jPanel1.add(jScrollPane2);
@@ -111,6 +128,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         pnTable.add(jButton3);
 
         btChiTiet.setText("Chi tiết");
+        btChiTiet.setPreferredSize(new java.awt.Dimension(120, 23));
         btChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btChiTietActionPerformed(evt);
@@ -119,6 +137,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         pnTable.add(btChiTiet);
 
         jButton5.setText("Xóa");
+        jButton5.setPreferredSize(new java.awt.Dimension(120, 23));
         pnTable.add(jButton5);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -160,6 +179,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 }
             }
         }
+        pnHyuNie.revalidate(); pnHyuNie.repaint();
     }//GEN-LAST:event_btChiTietActionPerformed
 
 

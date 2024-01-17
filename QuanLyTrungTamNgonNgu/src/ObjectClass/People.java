@@ -14,9 +14,8 @@ public class People implements Serializable{
         numMakeID++;
     }
 
-    public People(String Name, int Tuoi, String SoDienThoai, String QueQuan) {
-        
-        this.ID = "HN" + numMakeID;
+    public People(String ID, String Name, int Tuoi, String SoDienThoai, String QueQuan) {
+        this.ID = ID + numMakeID;
         this.Name = Name;
         this.Tuoi = Tuoi;
         this.SoDienThoai = SoDienThoai;

@@ -10,7 +10,7 @@ public class GiangVien extends People implements Serializable{
     }
 
     public GiangVien(String Name, int Tuoi, String SoDienThoai, String QueQuan, String TrinhDo) {
-        super(Name, Tuoi, SoDienThoai, QueQuan);
+        super("GV",Name, Tuoi, SoDienThoai, QueQuan);
         this.TrinhDo = TrinhDo;
     }
 
