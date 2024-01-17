@@ -1,7 +1,7 @@
 package QuanLyUI;
 
 import ObjectClass.GiangVien;
-import ObjectClass.HocVien;
+import ObjectClass.HocVien; 
 import ObjectClass.KhoaHoc;
 import java.io.File;
 import java.util.ArrayList;
@@ -11,12 +11,11 @@ import saveLoad.SaveLoad;
 public class UI extends javax.swing.JFrame {
     private File path = new File("data.bin");
     private List<KhoaHoc> dsKH = new ArrayList<>();
-    private List<pnListKhoaHoc> lsKhoaHoc = new ArrayList<>();
     public UI() {
         initComponents();
         SetupData();
-        MakeListKhoaHoc();
-        pnHyuNie.add(new pnKhoaHoc(lsKhoaHoc));
+        dsKH = SaveLoad.Load(path);
+        pnHyuNie.add(new pnKhoaHoc(dsKH,pnHyuNie));
     }
     private void SetupData(){
         List<KhoaHoc> dsKH = new ArrayList<>();
@@ -24,12 +23,12 @@ public class UI extends javax.swing.JFrame {
         KhoaHoc b = new KhoaHoc("Tieng Nhat","Lap trinh ios",250000 ,new GiangVien("Nguyen Huu Dai", 50, "0985695395","Ninh Binh", "Thac Si"), 50, "30/1/2023");
         KhoaHoc c = new KhoaHoc("Tieng Trung","Cach tan gai",3500000 ,new GiangVien("Pham Thi Hong Anh", 19, "0355336064","Ninh Binh", "Tien Si"), 70, "20/1/2024");
         
-        HocVien x = new HocVien("Nguyen Thai Hoang", 14, "091234567", "Ha Noi", "Kha");
+        HocVien x = new HocVien("Phan Thai Hoang", 14, "091234567", "Ha Noi", "Kha");
         HocVien y = new HocVien("Nguyen Minh Nguyet", 20, "091234567", "Ha Noi", "Gioi");
-        HocVien z = new HocVien("Nguyen Thanh Hoang", 17, "091234567", "Ha Noi", "Kha");
+        HocVien z = new HocVien("Tran Thanh Hoang", 17, "091234567", "Ha Noi", "Kha");
         HocVien m = new HocVien("Nguyen Minh Van", 19, "091234567", "Ha Noi", "Trung Binh");
         HocVien n = new HocVien("Nguyen Van Thui", 21, "091234567", "Ha Noi", "Kha");
-        HocVien q = new HocVien("Nguyen Thi No", 22, "091234567", "Ha Noi", "Trung Binh");
+        HocVien q = new HocVien("Vu Thi No", 22, "091234567", "Ha Noi", "Trung Binh");
         HocVien p = new HocVien("Nguyen Van Hoang", 18, "091234567", "Ha Noi", "Kha");
         
         a.addHocVien(x); a.addHocVien(p); a.addHocVien(y); a.addHocVien(z);
@@ -39,13 +38,6 @@ public class UI extends javax.swing.JFrame {
         dsKH.add(a);    dsKH.add(b);    dsKH.add(c);
         
         SaveLoad.Save(dsKH, path);
-    }
-    private void MakeListKhoaHoc(){
-        List<KhoaHoc> dsKhoaHoc = new ArrayList<>();
-        dsKhoaHoc = SaveLoad.Load(path);
-        for(var o : dsKhoaHoc){
-            lsKhoaHoc.add(new pnListKhoaHoc(o,pnHyuNie));
-        }
     }
 
     @SuppressWarnings("unchecked")

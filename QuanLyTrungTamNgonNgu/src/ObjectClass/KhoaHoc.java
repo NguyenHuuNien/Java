@@ -6,6 +6,8 @@ import java.util.List;
 
 public class KhoaHoc implements Serializable{
     private String NgonNgu;
+    private static int curID = 5000;
+    private int IDKhoaHoc;
     private String tenKhoaHoc;
     private int gia;
     private List<HocVien> dsHocVien;
@@ -14,10 +16,14 @@ public class KhoaHoc implements Serializable{
     private String thoiGian;
 
     public KhoaHoc() {
+        this.IDKhoaHoc = curID;
+        curID++;
         dsHocVien = new ArrayList<>();
     }
 
     public KhoaHoc(String NgonNgu, String tenKhoaHoc,int Gia, GiangVien giangVien,int maxHocVien,String thoiGian) {
+        this.IDKhoaHoc = curID;
+        curID++;
         this.NgonNgu = NgonNgu;
         this.tenKhoaHoc = tenKhoaHoc;
         this.giangVien = giangVien;
@@ -26,6 +32,14 @@ public class KhoaHoc implements Serializable{
         this.soLuong[0] = 0;        
         this.soLuong[1] = maxHocVien;
         dsHocVien = new ArrayList<>();
+    }
+
+    public int getIDKhoaHoc() {
+        return IDKhoaHoc;
+    }
+
+    public void setIDKhoaHoc(int IDKhoaHoc) {
+        this.IDKhoaHoc = IDKhoaHoc;
     }
     
     public boolean addHocVien(HocVien hv){
