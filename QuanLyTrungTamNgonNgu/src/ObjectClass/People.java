@@ -3,27 +3,27 @@ package ObjectClass;
 public class People {
     private String ID;
     private String Name;
-    private String ChucVu;
+    private int Tuoi;
     private String SoDienThoai;
     private String QueQuan;
+    private static int numMakeID = 100;
 
     public People() {
+        numMakeID++;
     }
 
-    public People(String ID, String Name, String ChucVu, String SoDienThoai, String QueQuan) {
-        this.ID = ID;
+    public People(String Name, int Tuoi, String SoDienThoai, String QueQuan) {
+        
+        this.ID = "HN" + numMakeID;
         this.Name = Name;
-        this.ChucVu = ChucVu;
+        this.Tuoi = Tuoi;
         this.SoDienThoai = SoDienThoai;
         this.QueQuan = QueQuan;
+        numMakeID++;
     }
 
     public String getID() {
         return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public String getName() {
@@ -34,12 +34,12 @@ public class People {
         this.Name = Name;
     }
 
-    public String getChucVu() {
-        return ChucVu;
+    public int getTuoi() {
+        return Tuoi;
     }
 
-    public void setChucVu(String ChucVu) {
-        this.ChucVu = ChucVu;
+    public void setTuoi(int Tuoi) {
+        this.Tuoi = Tuoi;
     }
 
     public String getSoDienThoai() {
@@ -60,7 +60,7 @@ public class People {
 
     @Override
     public String toString() {
-        return "People{" + "ID=" + ID + ", Name=" + Name + ", ChucVu=" + ChucVu + ", SoDienThoai=" + SoDienThoai + ", QueQuan=" + QueQuan + '}';
+        return "People{" + "ID=" + ID + ", Name=" + Name + ", ChucVu=" + Tuoi + ", SoDienThoai=" + SoDienThoai + ", QueQuan=" + QueQuan + '}';
     }
     
 }

@@ -1,28 +1,23 @@
 package ObjectClass;
 
 public class HocVien extends People{
-    private double diem;
     private String HocLuc;
 
     public HocVien() {
         super();
     }
-    
-    public HocVien(double diem) {
-        this.diem = diem;
+
+    public HocVien(String ID, String Name, int Tuoi, String SoDienThoai, String QueQuan, String HocLuc) {
+        super(Name, Tuoi, SoDienThoai, QueQuan);
+        this.HocLuc = HocLuc;
     }
 
-    public HocVien(double diem, String ID, String Name, String ChucVu, String SoDienThoai, String QueQuan) {
-        super(ID, Name, ChucVu, SoDienThoai, QueQuan);
-        this.diem = diem;
+    public String getHocLuc() {
+        return HocLuc;
     }
 
-    public double getDiem() {
-        return diem;
-    }
-
-    public void setDiem(double diem) {
-        this.diem = diem;
+    public void setHocLuc(String HocLuc) {
+        this.HocLuc = HocLuc;
     }
     
 }

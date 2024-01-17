@@ -18,15 +18,23 @@ public class KhoaHoc {
         this.tenKhoaHoc = tenKhoaHoc;
         this.giangVien = giangVien;
         this.thoiGian = thoiGian;
+        this.soLuong[0] = 0;        
         this.soLuong[1] = maxHocVien;
         dsHocVien = new ArrayList<>();
     }
     
-    public void addHocVien(HocVien hv){
-        dsHocVien.add(hv);
-        soLuong[0] = dsHocVien.size();
+    public boolean addHocVien(HocVien hv){
+        if(soLuong[0]<soLuong[1]){
+            dsHocVien.add(hv);
+            soLuong[0] = dsHocVien.size();
+            return true;
+        }else{
+            return false;
+        }
     }
-
+    public int[] getSoLuong(){
+        return soLuong;
+    }
     public String getTenKhoaHoc() {
         return tenKhoaHoc;
     }
