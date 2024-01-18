@@ -31,7 +31,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             data[i][0] = dsListKH.get(i).getIDKhoaHoc();
             data[i][1] = dsListKH.get(i).getTenKhoaHoc();
             
-            data[i][2] = dsListKH.get(i).getGiangVien().getName();
+            if(dsListKH.get(i).getGiangVien()!=null){
+                data[i][2] = dsListKH.get(i).getGiangVien().getName();
+            }
             
             int[] x = dsListKH.get(i).getSoLuong();
             String s = x[0] + "/" + x[1];

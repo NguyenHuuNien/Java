@@ -30,13 +30,15 @@ public class pnThanhVien extends javax.swing.JPanel {
     }
     private void SetupTable(){
         Object[][] data = new Object[kh.getSoLuong()[0]+1][7];
-        data[0][0] = kh.getGiangVien().getID();
-        data[0][1] = kh.getGiangVien().getName();
-        data[0][2] = kh.getGiangVien().getTuoi();
-        data[0][3] = kh.getGiangVien().getGioiTinh();
-        data[0][4] = kh.getGiangVien().getSoDienThoai();
-        data[0][5] = kh.getGiangVien().getQueQuan();
-        data[0][6] = "Trình độ " + kh.getGiangVien().getTrinhDo();
+        if(kh.getGiangVien()!=null){
+            data[0][0] = kh.getGiangVien().getID();
+            data[0][1] = kh.getGiangVien().getName();
+            data[0][2] = kh.getGiangVien().getTuoi();
+            data[0][3] = kh.getGiangVien().getGioiTinh();
+            data[0][4] = kh.getGiangVien().getSoDienThoai();
+            data[0][5] = kh.getGiangVien().getQueQuan();
+            data[0][6] = "Trình độ " + kh.getGiangVien().getTrinhDo();
+        }
         
         for(int i = 0; i < dsHV.size(); i++){
             data[i+1][0] = dsHV.get(i).getID();
@@ -72,10 +74,7 @@ public class pnThanhVien extends javax.swing.JPanel {
 
         tbThanhVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+
             },
             new String [] {
                 "ID", "Họ và Tên", "Tuổi", "Gioi Tinh", "Số điện thoại", "Quê quán", "Học lực"
@@ -156,7 +155,10 @@ public class pnThanhVien extends javax.swing.JPanel {
 
     private void btChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChiTietActionPerformed
         int rowSelect = tbThanhVien.getSelectedRow();
-        System.out.println(rowSelect);
+        if(rowSelect==0){
+            UI.getPanelControl().removeAll();
+            UI.getPanelControl().add(new pnTTGiangVien(kh.getGiangVien(),kh));
+        }
         if(rowSelect<0){
             return;
         }

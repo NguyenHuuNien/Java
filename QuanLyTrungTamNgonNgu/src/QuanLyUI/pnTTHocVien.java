@@ -226,11 +226,11 @@ public class pnTTHocVien extends javax.swing.JPanel {
 
         txtNangLuc.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtNangLuc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtNangLuc.setText("Năng lực");
+        txtNangLuc.setText("Học lực");
         txtNangLuc.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel7.add(txtNangLuc);
 
-        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thạc sĩ", "Tiến sĩ", "Giáo sư", "Phó giáo sư", "Giỏi", "Khá", "Trung Bình", "Kém" }));
+        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giỏi", "Khá", "Trung Bình", "Kém" }));
         cbNangLuc.setSelectedIndex(-1);
         cbNangLuc.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel7.add(cbNangLuc);

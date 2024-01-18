@@ -26,6 +26,8 @@ public class UI extends javax.swing.JFrame {
     }
     private void SetupData(){
         List<KhoaHoc> dsKH = new ArrayList<>();
+        KhoaHoc i = new KhoaHoc();
+        dsKH.add(i);
         KhoaHoc a = new KhoaHoc("Tiếng Anh","Lập trình Android",100000, new GiangVien("Nguyễn Hữu Niên", 19, "Nam","0778421699","Ninh Bình", "Tiến sĩ"), 100, "10/12/2023");
         KhoaHoc b = new KhoaHoc("Tiếng Nhật","Lập trình IOS",250000 ,new GiangVien("Nguyễn Hữu Đại", 50, "Nam","0985695395","Ninh Bình", "Thạc sĩ"), 50, "30/01/2023");
         KhoaHoc c = new KhoaHoc("Tiếng Trung","Cách tán gái",3500000 ,new GiangVien("Phạm Thị Hồng Ánh", 19,"Nu", "0355336064","Ninh Bình", "Tiến sĩ"), 70, "20/01/2024");

@@ -5,8 +5,9 @@ import java.io.Serializable;
 public class GiangVien extends People implements Serializable{
     private String TrinhDo;
 
-    public GiangVien(String TrinhDo) {
-        this.TrinhDo = TrinhDo;
+    
+    public GiangVien() {
+        super("GV");
     }
 
     public GiangVien(String Name, int Tuoi,String gioiTinh ,String SoDienThoai, String QueQuan, String TrinhDo) {

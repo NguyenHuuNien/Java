@@ -4,6 +4,9 @@
  */
 package QuanLyUI;
 
+import ObjectClass.GiangVien;
+import ObjectClass.KhoaHoc;
+
 /**
  *
  * @author HELLO
@@ -13,8 +16,31 @@ public class pnTTGiangVien extends javax.swing.JPanel {
     /**
      * Creates new form pnThongTin
      */
-    public pnTTGiangVien() {
+    private KhoaHoc khoaHoc;
+    private GiangVien gv;
+    public pnTTGiangVien(KhoaHoc khoaHoc) {
         initComponents();
+        this.khoaHoc = khoaHoc;
+        gv = new GiangVien();
+        txtError.setText("");
+        txtID.setText(gv.getID());
+    }
+    public pnTTGiangVien(GiangVien gv, KhoaHoc khoaHoc) {
+        initComponents();
+        this.khoaHoc = khoaHoc;
+        this.gv = gv;
+        txtError.setText("");
+        setData();
+    }
+    private void setData(){
+        txtID.setText(gv.getID());
+        txtName.setText(gv.getName());
+        txtAge.setText(gv.getTuoi()+"");
+        rdNam.setSelected(gv.getGioiTinh().length()==3?true:false);
+        rdNu.setSelected(gv.getGioiTinh().length()==2?true:false);
+        txtNumberPhone.setText(gv.getSoDienThoai());
+        cbAddress.setSelectedItem(gv.getQueQuan());
+        cbNangLuc.setSelectedItem(gv.getTrinhDo());
     }
 
     /**
@@ -198,11 +224,11 @@ public class pnTTGiangVien extends javax.swing.JPanel {
 
         txtNangLuc.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         txtNangLuc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        txtNangLuc.setText("Năng lực");
+        txtNangLuc.setText("Trình độ");
         txtNangLuc.setPreferredSize(new java.awt.Dimension(150, 30));
         jPanel7.add(txtNangLuc);
 
-        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thạc sĩ", "Tiến sĩ", "Giáo sư", "Phó giáo sư", "Giỏi", "Khá", "Trung Bình", "Kém" }));
+        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thạc sĩ", "Tiến sĩ", "Giáo sư", "Phó giáo sư" }));
         cbNangLuc.setSelectedIndex(-1);
         cbNangLuc.setPreferredSize(new java.awt.Dimension(200, 25));
         jPanel7.add(cbNangLuc);
@@ -213,9 +239,93 @@ public class pnTTGiangVien extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
+        if(txtName.getText().equals("")){
+            txtError.setText("Vui lòng nhập tên!");
+            return;
+        }else{
+            String[] s = txtName.getText().split(" ");
+            StringBuilder result = new StringBuilder();
+            for (String o : s) {
+                if (o.length() > 0) {
+                    String capitalizedWord = o.substring(0, 1).toUpperCase() + o.substring(1);
+                    result.append(capitalizedWord).append(" ");
+                }
+            }
+            txtName.setText(result.toString().trim());
+            gv.setName(txtName.getText());
+        }
         
+        if(!rdNam.isSelected() && !rdNu.isSelected()){
+            txtError.setText("Vui lòng chọn giới tính!");
+            return;
+        }else{
+            gv.setGioiTinh(rdNam.isSelected()?"Nam":"Nữ");
+        }
+        
+        if(txtAge.getText().equals("")){
+            txtError.setText("Vui lòng nhập tuổi!");
+            return;
+        }else{
+            String s = txtAge.getText();
+            for(int i=0;i<s.length();i++){
+                if(s.charAt(i)<'0' || s.charAt(i)>'9'){
+                    txtError.setText("Vui lòng nhập đúng định dạng tuổi!");
+                    return;
+                }
+            }
+            int tuoi = Integer.parseInt(txtAge.getText());
+            if(tuoi<0 || tuoi > 100){
+                txtError.setText("Tuổi: Trường hợp này trung tâm từ chối nhận việc!");
+                return;
+            }
+            gv.setTuoi(tuoi);
+        }
+        
+        String sdt = txtNumberPhone.getText();
+        for(int i=0;i<sdt.length();i++){
+            if(sdt.charAt(i)<'0' || sdt.charAt(i)>'9'){
+                txtError.setText("Vui lòng nhập đúng định dạng Số điện thoại!");
+                return;
+            }
+        }
+        if(sdt.length()>13 || sdt.length()<10){
+            txtError.setText("Vui lòng nhập đúng định dạng Số điện thoại! (10-13 số)");
+            return;
+        }
+        gv.setSoDienThoai(sdt);
+        
+        if(cbAddress.getSelectedIndex()<0){
+            txtError.setText("Vui lòng chọn quê quán!");
+            return;
+        }else{
+            gv.setQueQuan((String)cbAddress.getSelectedItem());
+        }
+        
+        if(cbNangLuc.getSelectedIndex()<0){
+            txtError.setText("Vui lòng chọn trình độ!");
+            return;
+        }else{
+            gv.setTrinhDo((String)cbNangLuc.getSelectedItem());
+        }
+        CheckDaCoChua();
+        ReturnPnThanhVien();
     }//GEN-LAST:event_btSaveActionPerformed
 
+    private void CheckDaCoChua(){
+        for(var o : khoaHoc.getDSHocVien()){
+            if(o.getID().equals(gv.getID())){
+                return;
+            }
+        }
+        khoaHoc.setGiangVien(gv);
+    }
+    private void ReturnPnThanhVien(){
+        UI.getPanelControl().removeAll();
+        UI.getPanelControl().add(new pnThanhVien(khoaHoc));
+        UI.getPanelControl().revalidate();
+        UI.getPanelControl().repaint();
+    }
+    
     private void rdNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNamActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdNamActionPerformed
