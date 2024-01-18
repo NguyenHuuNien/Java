@@ -10,11 +10,11 @@ import javax.swing.JPanel;
 import saveLoad.SaveLoad;
 
 public class UI extends javax.swing.JFrame {
-    private File path = new File("data.bin");
+    private static File path = new File("data.bin");
     private static List<KhoaHoc> dsKH = new ArrayList<>();
     public UI() {
         initComponents();
-        SetupData();
+        //SetupData();
         dsKH = SaveLoad.Load(path);
         pnControl.add(new pnKhoaHoc(dsKH));
     }
@@ -25,6 +25,7 @@ public class UI extends javax.swing.JFrame {
         return dsKH;
     }
     public static void changePnController(JPanel newPanel){
+        SaveLoad.Save(dsKH, path);
         pnControl.removeAll();
         pnControl.add(newPanel);
         pnControl.revalidate();

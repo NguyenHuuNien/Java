@@ -27,28 +27,30 @@ public class SaveLoad {
 	}
 	public static <E> List<E> Load(File path){
 		List<E> obj = new ArrayList<E>();
-		try {
+		if(path.exists()){
+                    try {
 			ObjectInputStream ois = new ObjectInputStream(new FileInputStream(path));
 			while(true) {
-				try {
-					E o = (E)ois.readObject();
-					if(o instanceof E) {
-						obj.add(o);
-					}
-				}
-				catch(EOFException e) {
-					break;
-				}
-			}
-		} catch (FileNotFoundException e) {
+                            try {
+				E o = (E)ois.readObject();
+				if(o instanceof E) {
+                                    obj.add(o);
+                                }
+                            }
+                            catch(EOFException e) {
+                                break;
+                            }
+                        }
+                    } catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
+                    } catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+                    } catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		}
+                    }
+                }
 		return obj;
 	}
 }
