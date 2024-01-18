@@ -3,10 +3,10 @@ package ObjectClass;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class KhoaHoc implements Serializable{
     private String NgonNgu;
-    private static int curID = 5000;
     private int IDKhoaHoc;
     private String tenKhoaHoc;
     private int gia;
@@ -14,16 +14,15 @@ public class KhoaHoc implements Serializable{
     private GiangVien giangVien;
     private int[] soLuong = new int[2];
     private String thoiGian;
+    private Random random = new Random();
 
     public KhoaHoc() {
-        this.IDKhoaHoc = curID;
-        curID++;
+        this.IDKhoaHoc = IDKhoaHoc + (random.nextInt(99999-1000+1)+1000);
         dsHocVien = new ArrayList<>();
     }
 
     public KhoaHoc(String NgonNgu, String tenKhoaHoc,int Gia, GiangVien giangVien,int maxHocVien,String thoiGian) {
-        this.IDKhoaHoc = curID;
-        curID++;
+        this.IDKhoaHoc = IDKhoaHoc + (random.nextInt(99999-1000+1)+1000);
         this.NgonNgu = NgonNgu;
         this.tenKhoaHoc = tenKhoaHoc;
         this.giangVien = giangVien;
@@ -36,10 +35,6 @@ public class KhoaHoc implements Serializable{
 
     public int getIDKhoaHoc() {
         return IDKhoaHoc;
-    }
-
-    public void setIDKhoaHoc(int IDKhoaHoc) {
-        this.IDKhoaHoc = IDKhoaHoc;
     }
     
     public boolean addHocVien(HocVien hv){
@@ -73,6 +68,9 @@ public class KhoaHoc implements Serializable{
     }
     public int[] getSoLuong(){
         return soLuong;
+    }
+    public void setMaxSoLuong(int maxNum){
+        this.soLuong[1] = maxNum;
     }
     public String getTenKhoaHoc() {
         return tenKhoaHoc;

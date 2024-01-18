@@ -18,7 +18,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     }
     private void setSizeColumn(){
         TableColumnModel columnModel = tbKhoaHoc.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(20);
+        columnModel.getColumn(0).setPreferredWidth(40);
         columnModel.getColumn(1).setPreferredWidth(150);
         columnModel.getColumn(2).setPreferredWidth(125);
         columnModel.getColumn(3).setPreferredWidth(30);
@@ -57,7 +57,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbKhoaHoc = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        btThemKhoaHoc = new javax.swing.JButton();
         btChiTiet = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
@@ -119,14 +119,14 @@ public class pnKhoaHoc extends javax.swing.JPanel {
 
         pnTable.add(jPanel1);
 
-        jButton3.setText("Thêm khóa học");
-        jButton3.setPreferredSize(new java.awt.Dimension(120, 23));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btThemKhoaHoc.setText("Thêm khóa học");
+        btThemKhoaHoc.setPreferredSize(new java.awt.Dimension(120, 23));
+        btThemKhoaHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btThemKhoaHocActionPerformed(evt);
             }
         });
-        pnTable.add(jButton3);
+        pnTable.add(btThemKhoaHoc);
 
         btChiTiet.setText("Chi tiết");
         btChiTiet.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -163,9 +163,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void btThemKhoaHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemKhoaHocActionPerformed
+        UI.changePnController(new pnTTKhoaHoc());
+    }//GEN-LAST:event_btThemKhoaHocActionPerformed
 
     private void btChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChiTietActionPerformed
         int rowSelected = tbKhoaHoc.getSelectedRow();
@@ -174,18 +174,16 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             int ID = (int)tab.getValueAt(rowSelected, 0);
             for(var o : dsListKH){
                 if(o.getIDKhoaHoc()==ID){
-                    UI.getPanelControl().removeAll();
-                    UI.getPanelControl().add(new pnThanhVien(o));
+                    UI.changePnController(new pnThanhVien(o));
                 }
             }
         }
-        UI.getPanelControl().revalidate();      UI.getPanelControl().repaint();
     }//GEN-LAST:event_btChiTietActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btChiTiet;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btThemKhoaHoc;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

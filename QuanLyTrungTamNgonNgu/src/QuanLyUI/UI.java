@@ -18,11 +18,20 @@ public class UI extends javax.swing.JFrame {
         dsKH = SaveLoad.Load(path);
         pnControl.add(new pnKhoaHoc(dsKH));
     }
-    public static JPanel getPanelControl(){
-        return pnControl;
+    public static void addKhoaHoc(KhoaHoc newKH){
+        dsKH.add(newKH);
     }
     public static List<KhoaHoc> getDSKhoaHoc(){
         return dsKH;
+    }
+    public static void changePnController(JPanel newPanel){
+        pnControl.removeAll();
+        pnControl.add(newPanel);
+        pnControl.revalidate();
+        pnControl.repaint();
+    }
+    public static String getNgonNgu(){
+        return (String)cbNgonNgu.getSelectedItem();
     }
     private void SetupData(){
         List<KhoaHoc> dsKH = new ArrayList<>();
@@ -30,7 +39,7 @@ public class UI extends javax.swing.JFrame {
         dsKH.add(i);
         KhoaHoc a = new KhoaHoc("Tiếng Anh","Lập trình Android",100000, new GiangVien("Nguyễn Hữu Niên", 19, "Nam","0778421699","Ninh Bình", "Tiến sĩ"), 100, "10/12/2023");
         KhoaHoc b = new KhoaHoc("Tiếng Nhật","Lập trình IOS",250000 ,new GiangVien("Nguyễn Hữu Đại", 50, "Nam","0985695395","Ninh Bình", "Thạc sĩ"), 50, "30/01/2023");
-        KhoaHoc c = new KhoaHoc("Tiếng Trung","Cách tán gái",3500000 ,new GiangVien("Phạm Thị Hồng Ánh", 19,"Nu", "0355336064","Ninh Bình", "Tiến sĩ"), 70, "20/01/2024");
+        KhoaHoc c = new KhoaHoc("Tiếng Trung","Cách tán gái",3500000 ,new GiangVien("Phạm Thị Hồng Ánh", 19,"Nữ", "0355336064","Ninh Bình", "Tiến sĩ"), 70, "20/01/2024");
         
         HocVien x = new HocVien("Phan Thái Hoàng", 14, "Nam" ,"091234567", "Hà Nội", "Khá");
         HocVien y = new HocVien("Nguyen Minh Nguyet", 20,"Nữ" ,"091234567", "Hà Nội", "Giỏi");
@@ -60,7 +69,7 @@ public class UI extends javax.swing.JFrame {
         pnInfor = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbNgonNgu = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -113,14 +122,14 @@ public class UI extends javax.swing.JFrame {
         jLabel3.setText("Chọn khóa học ngôn ngữ:");
         jPanel3.add(jLabel3);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
-        jComboBox1.setPreferredSize(new java.awt.Dimension(115, 35));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        cbNgonNgu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
+        cbNgonNgu.setPreferredSize(new java.awt.Dimension(115, 35));
+        cbNgonNgu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                cbNgonNguActionPerformed(evt);
             }
         });
-        jPanel3.add(jComboBox1);
+        jPanel3.add(cbNgonNgu);
 
         pnInfor.add(jPanel3);
 
@@ -227,9 +236,9 @@ public class UI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void cbNgonNguActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNgonNguActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_cbNgonNguActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
@@ -284,9 +293,9 @@ public class UI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
+    private static javax.swing.JComboBox<String> cbNgonNgu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

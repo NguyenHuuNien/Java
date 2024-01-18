@@ -20,7 +20,7 @@ public class pnThanhVien extends javax.swing.JPanel {
     }
     private void resizeTable(){
         TableColumnModel columnModel = tbThanhVien.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(20);
+        columnModel.getColumn(0).setPreferredWidth(40);
         columnModel.getColumn(1).setPreferredWidth(130);
         columnModel.getColumn(2).setPreferredWidth(20);
         columnModel.getColumn(3).setPreferredWidth(35);
@@ -156,8 +156,7 @@ public class pnThanhVien extends javax.swing.JPanel {
     private void btChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChiTietActionPerformed
         int rowSelect = tbThanhVien.getSelectedRow();
         if(rowSelect==0){
-            UI.getPanelControl().removeAll();
-            UI.getPanelControl().add(new pnTTGiangVien(kh.getGiangVien(),kh));
+            UI.changePnController(new pnTTGiangVien(kh.getGiangVien(),kh, this));
         }
         if(rowSelect<0){
             return;
@@ -167,15 +166,13 @@ public class pnThanhVien extends javax.swing.JPanel {
         String ID = (String)tabModel.getValueAt(rowSelect, 0);
         for(var o : dsHV){
             if(o.getID().equals(ID)){
-                UI.getPanelControl().removeAll();
-                UI.getPanelControl().add(new pnTTHocVien(o,kh));
+                UI.changePnController(new pnTTHocVien(o,kh));
             }
         }
     }//GEN-LAST:event_btChiTietActionPerformed
 
     private void btThemHocVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHocVienActionPerformed
-        UI.getPanelControl().removeAll();
-        UI.getPanelControl().add(new pnTTHocVien(kh));
+        UI.changePnController(new pnTTHocVien(new HocVien(),kh));
     }//GEN-LAST:event_btThemHocVienActionPerformed
 
 

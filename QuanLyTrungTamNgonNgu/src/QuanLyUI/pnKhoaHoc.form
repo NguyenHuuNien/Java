@@ -143,7 +143,7 @@
             </Container>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton3">
+        <Component class="javax.swing.JButton" name="btThemKhoaHoc">
           <Properties>
             <Property name="text" type="java.lang.String" value="Th&#xea;m kh&#xf3;a h&#x1ecd;c"/>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -151,7 +151,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btThemKhoaHocActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btChiTiet">

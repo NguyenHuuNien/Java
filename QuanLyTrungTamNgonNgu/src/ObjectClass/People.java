@@ -1,6 +1,7 @@
 package ObjectClass;
 
 import java.io.Serializable;
+import java.util.Random;
 
 public class People implements Serializable{
     private String ID;
@@ -9,23 +10,20 @@ public class People implements Serializable{
     private String gioiTinh;
     private String SoDienThoai;
     private String QueQuan;
-    private static int numMakeID = 100;
+    private Random random = new Random();
 
     public People(String ID) {
-        this.ID = ID + numMakeID;
-        numMakeID++;
+        this.ID = ID + (random.nextInt(99999-1000+1)+1000);
     }
 
     public People(String ID, String Name, int Tuoi,String gioiTinh, String SoDienThoai, String QueQuan) {
-        this.ID = ID + numMakeID;
+        this.ID = ID + (random.nextInt(99999-1000+1)+1000);
         this.Name = Name;
         this.Tuoi = Tuoi;
         this.SoDienThoai = SoDienThoai;
         this.QueQuan = QueQuan;
         this.gioiTinh = gioiTinh;
-        numMakeID++;
     }
-
     public String getGioiTinh() {
         return gioiTinh;
     }
