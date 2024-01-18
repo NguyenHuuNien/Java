@@ -6,30 +6,37 @@ import ObjectClass.KhoaHoc;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JPanel;
 import saveLoad.SaveLoad;
 
 public class UI extends javax.swing.JFrame {
     private File path = new File("data.bin");
-    private List<KhoaHoc> dsKH = new ArrayList<>();
+    private static List<KhoaHoc> dsKH = new ArrayList<>();
     public UI() {
         initComponents();
         SetupData();
         dsKH = SaveLoad.Load(path);
-        pnHyuNie.add(new pnKhoaHoc(dsKH,pnHyuNie));
+        pnControl.add(new pnKhoaHoc(dsKH));
+    }
+    public static JPanel getPanelControl(){
+        return pnControl;
+    }
+    public static List<KhoaHoc> getDSKhoaHoc(){
+        return dsKH;
     }
     private void SetupData(){
         List<KhoaHoc> dsKH = new ArrayList<>();
-        KhoaHoc a = new KhoaHoc("Tieng Anh","Lap trinh android",100000, new GiangVien("Nguyen Huu Nien", 19, "0778421699","Ninh Binh", "Tien Si"), 100, "10/12/2023");
-        KhoaHoc b = new KhoaHoc("Tieng Nhat","Lap trinh ios",250000 ,new GiangVien("Nguyen Huu Dai", 50, "0985695395","Ninh Binh", "Thac Si"), 50, "30/1/2023");
-        KhoaHoc c = new KhoaHoc("Tieng Trung","Cach tan gai",3500000 ,new GiangVien("Pham Thi Hong Anh", 19, "0355336064","Ninh Binh", "Tien Si"), 70, "20/1/2024");
+        KhoaHoc a = new KhoaHoc("Tiếng Anh","Lập trình Android",100000, new GiangVien("Nguyễn Hữu Niên", 19, "Nam","0778421699","Ninh Bình", "Tiến sĩ"), 100, "10/12/2023");
+        KhoaHoc b = new KhoaHoc("Tiếng Nhật","Lập trình IOS",250000 ,new GiangVien("Nguyễn Hữu Đại", 50, "Nam","0985695395","Ninh Bình", "Thạc sĩ"), 50, "30/01/2023");
+        KhoaHoc c = new KhoaHoc("Tiếng Trung","Cách tán gái",3500000 ,new GiangVien("Phạm Thị Hồng Ánh", 19,"Nu", "0355336064","Ninh Bình", "Tiến sĩ"), 70, "20/01/2024");
         
-        HocVien x = new HocVien("Phan Thai Hoang", 14, "091234567", "Ha Noi", "Kha");
-        HocVien y = new HocVien("Nguyen Minh Nguyet", 20, "091234567", "Ha Noi", "Gioi");
-        HocVien z = new HocVien("Tran Thanh Hoang", 17, "091234567", "Ha Noi", "Kha");
-        HocVien m = new HocVien("Nguyen Minh Van", 19, "091234567", "Ha Noi", "Trung Binh");
-        HocVien n = new HocVien("Nguyen Van Thui", 21, "091234567", "Ha Noi", "Kha");
-        HocVien q = new HocVien("Vu Thi No", 22, "091234567", "Ha Noi", "Trung Binh");
-        HocVien p = new HocVien("Nguyen Van Hoang", 18, "091234567", "Ha Noi", "Kha");
+        HocVien x = new HocVien("Phan Thái Hoàng", 14, "Nam" ,"091234567", "Hà Nội", "Khá");
+        HocVien y = new HocVien("Nguyen Minh Nguyet", 20,"Nữ" ,"091234567", "Hà Nội", "Giỏi");
+        HocVien z = new HocVien("Tran Thanh Hoang", 17, "Nam" ,"091234567", "Hà Nội", "Khá");
+        HocVien m = new HocVien("Nguyen Minh Van", 19, "Nữ" ,"091234567", "Hà Nội", "Trung bình");
+        HocVien n = new HocVien("Nguyen Van Thui", 21,"Nam" ,"091234567", "Hà Nội", "khá");
+        HocVien q = new HocVien("Vu Thi No", 22, "Nữ" ,"091234567", "Hà Nội", "Trung bình");
+        HocVien p = new HocVien("Nguyen Van Hoang", 18, "Nam" ,"091234567", "Hà Nội", "Khá");
         
         a.addHocVien(x); a.addHocVien(p); a.addHocVien(y); a.addHocVien(z);
         b.addHocVien(p); b.addHocVien(q); b.addHocVien(n); b.addHocVien(z);
@@ -68,7 +75,7 @@ public class UI extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton2 = new javax.swing.JButton();
         pnSpace2 = new javax.swing.JPanel();
-        pnHyuNie = new javax.swing.JPanel();
+        pnControl = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quan Ly Trung Tam Ngoai Ngu");
@@ -213,7 +220,7 @@ public class UI extends javax.swing.JFrame {
         pnSpace2.setPreferredSize(new java.awt.Dimension(699, 35));
         pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
         getContentPane().add(pnSpace2);
-        getContentPane().add(pnHyuNie);
+        getContentPane().add(pnControl);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -291,7 +298,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JPanel pnHyuNie;
+    private static javax.swing.JPanel pnControl;
     private javax.swing.JPanel pnInfor;
     private javax.swing.JPanel pnSapXep;
     private javax.swing.JPanel pnSpace;

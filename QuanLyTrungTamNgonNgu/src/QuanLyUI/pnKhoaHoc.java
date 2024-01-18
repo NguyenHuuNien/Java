@@ -1,22 +1,20 @@
 package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 public class pnKhoaHoc extends javax.swing.JPanel {
     private List<KhoaHoc> dsListKH = new ArrayList<>();
-    private JPanel pnHyuNie;
-    public pnKhoaHoc(List<KhoaHoc> ds, JPanel pnHyuNie) {
+    public pnKhoaHoc(List<KhoaHoc> ds) {
         initComponents();
         dsListKH = ds;
         SetupTable();
         setSizeColumn();
-        this.pnHyuNie = pnHyuNie;
     }
     private void setSizeColumn(){
         TableColumnModel columnModel = tbKhoaHoc.getColumnModel();
@@ -47,6 +45,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         String[] colName = {"ID","Tên","Giảng viên","Số lượng","Ngày","Giá"};
         DefaultTableModel dfTable = new DefaultTableModel(data,colName);
         tbKhoaHoc.setModel(dfTable);
+        tbKhoaHoc.setPreferredSize(new Dimension(550, dsListKH.size()>10?50*dsListKH.size():320));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -171,15 +170,14 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         if(rowSelected != -1){
             TableModel tab = tbKhoaHoc.getModel();
             int ID = (int)tab.getValueAt(rowSelected, 0);
-            System.out.println(ID);
             for(var o : dsListKH){
                 if(o.getIDKhoaHoc()==ID){
-                    pnHyuNie.removeAll();
-                    pnHyuNie.add(new pnThanhVien(o));
+                    UI.getPanelControl().removeAll();
+                    UI.getPanelControl().add(new pnThanhVien(o));
                 }
             }
         }
-        pnHyuNie.revalidate(); pnHyuNie.repaint();
+        UI.getPanelControl().revalidate();      UI.getPanelControl().repaint();
     }//GEN-LAST:event_btChiTietActionPerformed
 
 

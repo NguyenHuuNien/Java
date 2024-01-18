@@ -326,7 +326,10 @@
         <Property name="verticalGap" type="int" value="10"/>
       </Layout>
     </Container>
-    <Container class="javax.swing.JPanel" name="pnHyuNie">
+    <Container class="javax.swing.JPanel" name="pnControl">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
     </Container>

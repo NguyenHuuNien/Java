@@ -6,11 +6,11 @@ public class HocVien extends People implements Serializable{
     private String HocLuc;
 
     public HocVien() {
-        super();
+        super("HV");
     }
 
-    public HocVien(String Name, int Tuoi, String SoDienThoai, String QueQuan, String HocLuc) {
-        super("HV",Name, Tuoi, SoDienThoai, QueQuan);
+    public HocVien(String Name, int Tuoi, String gioiTinh,String SoDienThoai, String QueQuan, String HocLuc) {
+        super("HV",Name, Tuoi,gioiTinh, SoDienThoai, QueQuan);
         this.HocLuc = HocLuc;
     }
 
