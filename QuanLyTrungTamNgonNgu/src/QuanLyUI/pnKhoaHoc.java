@@ -57,7 +57,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         tbKhoaHoc = new javax.swing.JTable();
         btThemKhoaHoc = new javax.swing.JButton();
         btChiTiet = new javax.swing.JButton();
-        btThongKe = new javax.swing.JButton();
         btXoa = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(680, 460));
@@ -136,15 +135,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         });
         pnTable.add(btChiTiet);
 
-        btThongKe.setText("Thống kê");
-        btThongKe.setPreferredSize(new java.awt.Dimension(100, 23));
-        btThongKe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btThongKeActionPerformed(evt);
-            }
-        });
-        pnTable.add(btThongKe);
-
         btXoa.setText("Xóa");
         btXoa.setPreferredSize(new java.awt.Dimension(100, 23));
         btXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -208,15 +198,10 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         UI.changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_btXoaActionPerformed
 
-    private void btThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThongKeActionPerformed
-        
-    }//GEN-LAST:event_btThongKeActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btChiTiet;
     private javax.swing.JButton btThemKhoaHoc;
-    private javax.swing.JButton btThongKe;
     private javax.swing.JButton btXoa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

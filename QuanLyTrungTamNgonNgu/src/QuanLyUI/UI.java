@@ -8,16 +8,18 @@ import saveLoad.SaveLoad;
 
 public class UI extends javax.swing.JFrame {
     private static List<KhoaHoc> dsKH = new ArrayList<>();
+    private static List<KhoaHoc> dsKhoaHoc_Loc = new ArrayList<>();
     public UI() {
         initComponents();
         dsKH = SaveLoad.Load();
+        LocDanhSach("Tất cả");
         pnControl.add(new pnKhoaHoc());
     }
     public static void addKhoaHoc(KhoaHoc newKH){
         dsKH.add(newKH);
     }
     public static List<KhoaHoc> getDSKhoaHoc(){
-        return dsKH;
+        return dsKhoaHoc_Loc;
     }
     public static void changePnController(JPanel newPanel){
         SaveLoad.Save(dsKH);
@@ -28,8 +30,22 @@ public class UI extends javax.swing.JFrame {
     }
     public static String getNgonNgu(){
         return (String)cbNgonNgu.getSelectedItem();
+    }    
+
+    private void LocDanhSach(String text){
+        if(text.equals("Tất cả")){
+            txtTitle.setText("Thông tin tất cả các khóa học");
+            dsKhoaHoc_Loc = dsKH;
+        }else{
+            txtTitle.setText("Thông tin các khóa học " + text);
+            dsKhoaHoc_Loc = new ArrayList<>();
+            for(var o : dsKH){
+                if(o.getNgonNgu().equals(text)){
+                    dsKhoaHoc_Loc.add(o);
+                }
+            }
+        }
     }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,10 +60,9 @@ public class UI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         cbNgonNgu = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        pnSpace1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
         pnTitleKhoaHoc = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
+        txtTitle = new javax.swing.JLabel();
         pnSapXep = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -63,10 +78,11 @@ public class UI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Quan Ly Trung Tam Ngoai Ngu");
+        setMinimumSize(new java.awt.Dimension(700, 810));
         setPreferredSize(new java.awt.Dimension(700, 810));
         setResizable(false);
         setSize(new java.awt.Dimension(700, 810));
-        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 2));
+        getContentPane().setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 3));
 
         pnTitle.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 51, 255)));
         pnTitle.setPreferredSize(new java.awt.Dimension(680, 50));
@@ -95,8 +111,13 @@ public class UI extends javax.swing.JFrame {
         jLabel3.setText("Chọn khóa học ngôn ngữ:");
         jPanel3.add(jLabel3);
 
-        cbNgonNgu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
+        cbNgonNgu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
         cbNgonNgu.setPreferredSize(new java.awt.Dimension(115, 35));
+        cbNgonNgu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbNgonNguItemStateChanged(evt);
+            }
+        });
         cbNgonNgu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbNgonNguActionPerformed(evt);
@@ -106,30 +127,33 @@ public class UI extends javax.swing.JFrame {
 
         pnInfor.add(jPanel3);
 
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 5));
 
-        jLabel2.setText("Xin chào: HyuNie");
-        jLabel2.setPreferredSize(new java.awt.Dimension(120, 16));
-        jPanel4.add(jLabel2);
+        jButton3.setBackground(new java.awt.Color(153, 255, 255));
+        jButton3.setText("Thống kê");
+        jButton3.setPreferredSize(new java.awt.Dimension(100, 30));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jButton3);
 
         pnInfor.add(jPanel4);
 
         getContentPane().add(pnInfor);
 
-        pnSpace1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 6));
-        getContentPane().add(pnSpace1);
-
         pnTitleKhoaHoc.setPreferredSize(new java.awt.Dimension(700, 43));
-        pnTitleKhoaHoc.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
+        pnTitleKhoaHoc.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Các khóa học Tiếng Việt");
-        jLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
-        jLabel4.setPreferredSize(new java.awt.Dimension(300, 32));
-        jLabel4.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
-        pnTitleKhoaHoc.add(jLabel4);
+        txtTitle.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
+        txtTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        txtTitle.setText("Các khóa học Tiếng Việt");
+        txtTitle.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        txtTitle.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        txtTitle.setPreferredSize(new java.awt.Dimension(600, 32));
+        txtTitle.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+        pnTitleKhoaHoc.add(txtTitle);
 
         getContentPane().add(pnTitleKhoaHoc);
 
@@ -188,6 +212,11 @@ public class UI extends javax.swing.JFrame {
         pnSapXep.add(jRadioButton2);
 
         jButton2.setText("OK");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         pnSapXep.add(jButton2);
 
         getContentPane().add(pnSapXep);
@@ -214,7 +243,8 @@ public class UI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbNgonNguActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNgonNguActionPerformed
-        // TODO add your handling code here:
+        LocDanhSach((String)cbNgonNgu.getSelectedItem());
+        changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_cbNgonNguActionPerformed
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
@@ -236,6 +266,18 @@ public class UI extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         UI.changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        UI.changePnController(new pnThongKe());
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void cbNgonNguItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNgonNguItemStateChanged
+        
+    }//GEN-LAST:event_cbNgonNguItemStateChanged
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -277,11 +319,10 @@ public class UI extends javax.swing.JFrame {
     private static javax.swing.JComboBox<String> cbNgonNgu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -294,9 +335,9 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel pnInfor;
     private javax.swing.JPanel pnSapXep;
     private javax.swing.JPanel pnSpace;
-    private javax.swing.JPanel pnSpace1;
     private javax.swing.JPanel pnSpace2;
     private javax.swing.JPanel pnTitle;
     private javax.swing.JPanel pnTitleKhoaHoc;
+    private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 }
