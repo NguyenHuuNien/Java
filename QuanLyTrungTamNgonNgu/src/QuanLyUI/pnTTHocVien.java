@@ -2,6 +2,7 @@ package QuanLyUI;
 
 import ObjectClass.HocVien;
 import ObjectClass.KhoaHoc;
+import javax.swing.JOptionPane;
 
 public class pnTTHocVien extends javax.swing.JPanel {
     private HocVien a;
@@ -218,7 +219,7 @@ public class pnTTHocVien extends javax.swing.JPanel {
         txtNangLuc.setPreferredSize(new java.awt.Dimension(150, 35));
         jPanel7.add(txtNangLuc);
 
-        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giỏi", "Khá", "Trung Bình", "Kém", "Đang theo dõi" }));
+        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giỏi", "Khá", "Trung Bình", "Kém", "Đang theo dõi", "Đã nghỉ học" }));
         cbNangLuc.setSelectedIndex(4);
         cbNangLuc.setPreferredSize(new java.awt.Dimension(200, 35));
         jPanel7.add(cbNangLuc);
@@ -307,7 +308,10 @@ public class pnTTHocVien extends javax.swing.JPanel {
                 return;
             }
         }
-        khoaHoc.addHocVien(a);
+        boolean check = khoaHoc.addHocVien(a);
+        if(!check){
+            JOptionPane.showMessageDialog(null,"Lớp học đã đủ thành viên - Không thể thêm!");
+        }
     }
     private void ReturnPnThanhVien(){
         UI.changePnController(new pnThanhVien(khoaHoc));

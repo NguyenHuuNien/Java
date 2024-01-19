@@ -193,7 +193,7 @@ public class UI extends javax.swing.JFrame {
         getContentPane().add(pnSapXep);
 
         pnSpace2.setPreferredSize(new java.awt.Dimension(699, 35));
-        pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 3));
+        pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 3));
 
         jButton1.setText("Home");
         jButton1.setPreferredSize(new java.awt.Dimension(75, 25));
@@ -210,6 +210,7 @@ public class UI extends javax.swing.JFrame {
         getContentPane().add(pnControl);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void cbNgonNguActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNgonNguActionPerformed
