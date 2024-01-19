@@ -416,14 +416,14 @@
             <Component class="javax.swing.JComboBox" name="cbNangLuc">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Th&#x1ea1;c s&#x129;"/>
-                    <StringItem index="1" value="Ti&#x1ebf;n s&#x129;"/>
-                    <StringItem index="2" value="Gi&#xe1;o s&#x1b0;"/>
+                  <StringArray count="5">
+                    <StringItem index="0" value="Gi&#x1ea3;ng vi&#xea;n"/>
+                    <StringItem index="1" value="Th&#x1ea1;c s&#x129;"/>
+                    <StringItem index="2" value="Ti&#x1ebf;n s&#x129;"/>
                     <StringItem index="3" value="Ph&#xf3; gi&#xe1;o s&#x1b0;"/>
+                    <StringItem index="4" value="Gi&#xe1;o s&#x1b0;"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="-1"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 35]"/>
                 </Property>

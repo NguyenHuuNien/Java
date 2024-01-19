@@ -12,7 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SaveLoad {
-	public static <E> void Save(List<E> obj, File path) {
+    private static File path = new File("data.bin");
+	public static <E> void Save(List<E> obj) {
 		try {
 			ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path));
 			for(var o : obj) {
@@ -25,7 +26,7 @@ public class SaveLoad {
 			e.printStackTrace();
 		}
 	}
-	public static <E> List<E> Load(File path){
+	public static <E> List<E> Load(){
 		List<E> obj = new ArrayList<E>();
 		if(path.exists()){
                     try {

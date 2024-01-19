@@ -20,13 +20,13 @@ public class pnThanhVien extends javax.swing.JPanel {
     }
     private void resizeTable(){
         TableColumnModel columnModel = tbThanhVien.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(40);
+        columnModel.getColumn(0).setPreferredWidth(50);
         columnModel.getColumn(1).setPreferredWidth(130);
-        columnModel.getColumn(2).setPreferredWidth(20);
+        columnModel.getColumn(2).setPreferredWidth(30);
         columnModel.getColumn(3).setPreferredWidth(35);
-        columnModel.getColumn(4).setPreferredWidth(80);
-        columnModel.getColumn(5).setPreferredWidth(50);
-        columnModel.getColumn(6).setPreferredWidth(80);
+        columnModel.getColumn(4).setPreferredWidth(100);
+        columnModel.getColumn(5).setPreferredWidth(80);
+        columnModel.getColumn(6).setPreferredWidth(120);
     }
     private void SetupTable(){
         Object[][] data = new Object[kh.getSoLuong()[0]+1][7];
@@ -66,9 +66,16 @@ public class pnThanhVien extends javax.swing.JPanel {
         btChiTiet = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
 
+        java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 2);
+        flowLayout2.setAlignOnBaseline(true);
+        setLayout(flowLayout2);
+
         pnTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Bảng thành viên lớp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 14))); // NOI18N
-        pnTable.setPreferredSize(new java.awt.Dimension(680, 460));
-        pnTable.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20));
+        pnTable.setMinimumSize(new java.awt.Dimension(350, 87));
+        pnTable.setPreferredSize(new java.awt.Dimension(680, 450));
+        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 20);
+        flowLayout1.setAlignOnBaseline(true);
+        pnTable.setLayout(flowLayout1);
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(650, 350));
 
@@ -93,6 +100,11 @@ public class pnThanhVien extends javax.swing.JPanel {
         tbThanhVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbThanhVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbThanhVien.setShowGrid(true);
+        tbThanhVien.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                tbThanhVienComponentAdded(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbThanhVien);
         if (tbThanhVien.getColumnModel().getColumnCount() > 0) {
             tbThanhVien.getColumnModel().getColumn(0).setPreferredWidth(15);
@@ -105,10 +117,11 @@ public class pnThanhVien extends javax.swing.JPanel {
 
         pnTable.add(jScrollPane1);
 
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0, 100, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(630, 25));
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
-        btThemHocVien.setText("Thêm");
-        btThemHocVien.setPreferredSize(new java.awt.Dimension(120, 23));
+        btThemHocVien.setText("Thêm học viên");
+        btThemHocVien.setPreferredSize(new java.awt.Dimension(150, 23));
         btThemHocVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btThemHocVienActionPerformed(evt);
@@ -117,7 +130,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         jPanel1.add(btThemHocVien);
 
         btChiTiet.setText("Thông tin");
-        btChiTiet.setPreferredSize(new java.awt.Dimension(120, 23));
+        btChiTiet.setPreferredSize(new java.awt.Dimension(100, 23));
         btChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btChiTietActionPerformed(evt);
@@ -126,7 +139,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         jPanel1.add(btChiTiet);
 
         jButton5.setText("Xóa");
-        jButton5.setPreferredSize(new java.awt.Dimension(120, 23));
+        jButton5.setPreferredSize(new java.awt.Dimension(80, 23));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -136,26 +149,7 @@ public class pnThanhVien extends javax.swing.JPanel {
 
         pnTable.add(jPanel1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 680, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnTable, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        add(pnTable);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChiTietActionPerformed
@@ -194,6 +188,10 @@ public class pnThanhVien extends javax.swing.JPanel {
         }
         UI.changePnController(new pnThanhVien(kh));
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void tbThanhVienComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tbThanhVienComponentAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tbThanhVienComponentAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

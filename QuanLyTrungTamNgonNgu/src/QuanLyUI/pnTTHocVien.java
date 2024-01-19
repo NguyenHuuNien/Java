@@ -218,8 +218,8 @@ public class pnTTHocVien extends javax.swing.JPanel {
         txtNangLuc.setPreferredSize(new java.awt.Dimension(150, 35));
         jPanel7.add(txtNangLuc);
 
-        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giỏi", "Khá", "Trung Bình", "Kém" }));
-        cbNangLuc.setSelectedIndex(-1);
+        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giỏi", "Khá", "Trung Bình", "Kém", "Đang theo dõi" }));
+        cbNangLuc.setSelectedIndex(4);
         cbNangLuc.setPreferredSize(new java.awt.Dimension(200, 35));
         jPanel7.add(cbNangLuc);
 

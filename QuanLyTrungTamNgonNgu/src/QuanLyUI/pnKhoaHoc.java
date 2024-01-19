@@ -2,7 +2,6 @@ package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
 import java.awt.Dimension;
-import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -58,6 +57,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         tbKhoaHoc = new javax.swing.JTable();
         btThemKhoaHoc = new javax.swing.JButton();
         btChiTiet = new javax.swing.JButton();
+        btThongKe = new javax.swing.JButton();
         btXoa = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(680, 460));
@@ -128,7 +128,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         pnTable.add(btThemKhoaHoc);
 
         btChiTiet.setText("Chi tiết");
-        btChiTiet.setPreferredSize(new java.awt.Dimension(120, 23));
+        btChiTiet.setPreferredSize(new java.awt.Dimension(100, 23));
         btChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btChiTietActionPerformed(evt);
@@ -136,8 +136,17 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         });
         pnTable.add(btChiTiet);
 
+        btThongKe.setText("Thống kê");
+        btThongKe.setPreferredSize(new java.awt.Dimension(100, 23));
+        btThongKe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThongKeActionPerformed(evt);
+            }
+        });
+        pnTable.add(btThongKe);
+
         btXoa.setText("Xóa");
-        btXoa.setPreferredSize(new java.awt.Dimension(120, 23));
+        btXoa.setPreferredSize(new java.awt.Dimension(100, 23));
         btXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btXoaActionPerformed(evt);
@@ -199,10 +208,15 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         UI.changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_btXoaActionPerformed
 
+    private void btThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThongKeActionPerformed
+        
+    }//GEN-LAST:event_btThongKeActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btChiTiet;
     private javax.swing.JButton btThemKhoaHoc;
+    private javax.swing.JButton btThongKe;
     private javax.swing.JButton btXoa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;

@@ -218,8 +218,7 @@ public class pnTTGiangVien extends javax.swing.JPanel {
         txtNangLuc.setPreferredSize(new java.awt.Dimension(150, 35));
         jPanel7.add(txtNangLuc);
 
-        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Thạc sĩ", "Tiến sĩ", "Giáo sư", "Phó giáo sư" }));
-        cbNangLuc.setSelectedIndex(-1);
+        cbNangLuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Giảng viên", "Thạc sĩ", "Tiến sĩ", "Phó giáo sư", "Giáo sư" }));
         cbNangLuc.setPreferredSize(new java.awt.Dimension(200, 35));
         jPanel7.add(cbNangLuc);
 

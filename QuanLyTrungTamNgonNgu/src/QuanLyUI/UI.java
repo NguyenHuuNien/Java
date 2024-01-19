@@ -1,21 +1,16 @@
 package QuanLyUI;
 
-import ObjectClass.GiangVien;
-import ObjectClass.HocVien; 
 import ObjectClass.KhoaHoc;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JPanel;
-import saveLoad.SaveLoad;
+import saveLoad.SaveLoad;   
 
 public class UI extends javax.swing.JFrame {
-    private static File path = new File("data.bin");
     private static List<KhoaHoc> dsKH = new ArrayList<>();
     public UI() {
         initComponents();
-        //SetupData();
-        dsKH = SaveLoad.Load(path);
+        dsKH = SaveLoad.Load();
         pnControl.add(new pnKhoaHoc());
     }
     public static void addKhoaHoc(KhoaHoc newKH){
@@ -25,7 +20,7 @@ public class UI extends javax.swing.JFrame {
         return dsKH;
     }
     public static void changePnController(JPanel newPanel){
-        SaveLoad.Save(dsKH, path);
+        SaveLoad.Save(dsKH);
         pnControl.removeAll();
         pnControl.add(newPanel);
         pnControl.revalidate();
@@ -34,30 +29,7 @@ public class UI extends javax.swing.JFrame {
     public static String getNgonNgu(){
         return (String)cbNgonNgu.getSelectedItem();
     }
-    private void SetupData(){
-        List<KhoaHoc> dsKH = new ArrayList<>();
-        KhoaHoc i = new KhoaHoc();
-        dsKH.add(i);
-        KhoaHoc a = new KhoaHoc("Tiếng Anh","Lập trình Android",100000, new GiangVien("Nguyễn Hữu Niên", 19, "Nam","0778421699","Ninh Bình", "Tiến sĩ"), 100, "10/12/2023");
-        KhoaHoc b = new KhoaHoc("Tiếng Nhật","Lập trình IOS",250000 ,new GiangVien("Nguyễn Hữu Đại", 50, "Nam","0985695395","Ninh Bình", "Thạc sĩ"), 50, "30/01/2023");
-        KhoaHoc c = new KhoaHoc("Tiếng Trung","Cách tán gái",3500000 ,new GiangVien("Phạm Thị Hồng Ánh", 19,"Nữ", "0355336064","Ninh Bình", "Tiến sĩ"), 70, "20/01/2024");
-        
-        HocVien x = new HocVien("Phan Thái Hoàng", 14, "Nam" ,"091234567", "Hà Nội", "Khá");
-        HocVien y = new HocVien("Nguyen Minh Nguyet", 20,"Nữ" ,"091234567", "Hà Nội", "Giỏi");
-        HocVien z = new HocVien("Tran Thanh Hoang", 17, "Nam" ,"091234567", "Hà Nội", "Khá");
-        HocVien m = new HocVien("Nguyen Minh Van", 19, "Nữ" ,"091234567", "Hà Nội", "Trung bình");
-        HocVien n = new HocVien("Nguyen Van Thui", 21,"Nam" ,"091234567", "Hà Nội", "khá");
-        HocVien q = new HocVien("Vu Thi No", 22, "Nữ" ,"091234567", "Hà Nội", "Trung bình");
-        HocVien p = new HocVien("Nguyen Van Hoang", 18, "Nam" ,"091234567", "Hà Nội", "Khá");
-        
-        a.addHocVien(x); a.addHocVien(p); a.addHocVien(y); a.addHocVien(z);
-        b.addHocVien(p); b.addHocVien(q); b.addHocVien(n); b.addHocVien(z);
-        c.addHocVien(m); c.addHocVien(x); c.addHocVien(p); c.addHocVien(q);
-        
-        dsKH.add(a);    dsKH.add(b);    dsKH.add(c);
-        
-        SaveLoad.Save(dsKH, path);
-    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -73,7 +45,6 @@ public class UI extends javax.swing.JFrame {
         cbNgonNgu = new javax.swing.JComboBox<>();
         jPanel4 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         pnSpace1 = new javax.swing.JPanel();
         pnTitleKhoaHoc = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -87,6 +58,7 @@ public class UI extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jButton2 = new javax.swing.JButton();
         pnSpace2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         pnControl = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -140,15 +112,6 @@ public class UI extends javax.swing.JFrame {
         jLabel2.setPreferredSize(new java.awt.Dimension(120, 16));
         jPanel4.add(jLabel2);
 
-        jButton1.setFont(new java.awt.Font("Liberation Sans Narrow", 2, 12)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/icons8-log-out-20.png"))); // NOI18N
-        jButton1.setToolTipText("Dang Xuat");
-        jButton1.setAlignmentX(0.5F);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMaximumSize(new java.awt.Dimension(50, 50));
-        jButton1.setPreferredSize(new java.awt.Dimension(26, 26));
-        jPanel4.add(jButton1);
-
         pnInfor.add(jPanel4);
 
         getContentPane().add(pnInfor);
@@ -192,7 +155,7 @@ public class UI extends javax.swing.JFrame {
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 16));
         pnSapXep.add(jLabel5);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã lớp học", "Tên lớp học", "Thời gian học", "Số lượng đăng ký", "Giá" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã khóa học", "Tên khóa học", "Thời gian học", "Số lượng đăng ký", "Giá khóa học" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -230,8 +193,20 @@ public class UI extends javax.swing.JFrame {
         getContentPane().add(pnSapXep);
 
         pnSpace2.setPreferredSize(new java.awt.Dimension(699, 35));
-        pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
+        pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 3));
+
+        jButton1.setText("Home");
+        jButton1.setPreferredSize(new java.awt.Dimension(75, 25));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        pnSpace2.add(jButton1);
+
         getContentPane().add(pnSpace2);
+
+        pnControl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
         getContentPane().add(pnControl);
 
         pack();
@@ -257,40 +232,44 @@ public class UI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        UI.changePnController(new pnKhoaHoc());
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UI().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new UI().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
