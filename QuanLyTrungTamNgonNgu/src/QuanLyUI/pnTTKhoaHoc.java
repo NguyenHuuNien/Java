@@ -251,7 +251,7 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
             khoaHoc.setThoiGian(s);
         }
         UI.addKhoaHoc(khoaHoc);
-        UI.changePnController(new pnKhoaHoc(UI.getDSKhoaHoc()));
+        UI.changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_btSaveActionPerformed
 
     private void btnAddGVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGVActionPerformed

@@ -116,7 +116,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         });
         jPanel1.add(btThemHocVien);
 
-        btChiTiet.setText("Chi tiết");
+        btChiTiet.setText("Thông tin");
         btChiTiet.setPreferredSize(new java.awt.Dimension(120, 23));
         btChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +127,11 @@ public class pnThanhVien extends javax.swing.JPanel {
 
         jButton5.setText("Xóa");
         jButton5.setPreferredSize(new java.awt.Dimension(120, 23));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton5);
 
         pnTable.add(jPanel1);
@@ -174,6 +179,21 @@ public class pnThanhVien extends javax.swing.JPanel {
     private void btThemHocVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHocVienActionPerformed
         UI.changePnController(new pnTTHocVien(new HocVien(),kh));
     }//GEN-LAST:event_btThemHocVienActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        int rowSelect = tbThanhVien.getSelectedRow();
+        if(rowSelect != -1){
+            TableModel tab = tbThanhVien.getModel();
+            String ID = (String)tab.getValueAt(rowSelect, 0);
+            for(var o : dsHV){
+                if(ID.equals(o.getID())){
+                    dsHV.remove(o);
+                    break;
+                }
+            }
+        }
+        UI.changePnController(new pnThanhVien(kh));
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

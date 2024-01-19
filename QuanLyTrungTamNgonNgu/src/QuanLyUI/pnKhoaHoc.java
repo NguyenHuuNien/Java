@@ -9,10 +9,9 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 public class pnKhoaHoc extends javax.swing.JPanel {
-    private List<KhoaHoc> dsListKH = new ArrayList<>();
-    public pnKhoaHoc(List<KhoaHoc> ds) {
+    private List<KhoaHoc> dsListKH = UI.getDSKhoaHoc();
+    public pnKhoaHoc() {
         initComponents();
-        dsListKH = ds;
         SetupTable();
         setSizeColumn();
     }
@@ -59,7 +58,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         tbKhoaHoc = new javax.swing.JTable();
         btThemKhoaHoc = new javax.swing.JButton();
         btChiTiet = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btXoa = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(680, 460));
 
@@ -137,9 +136,14 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         });
         pnTable.add(btChiTiet);
 
-        jButton5.setText("Xóa");
-        jButton5.setPreferredSize(new java.awt.Dimension(120, 23));
-        pnTable.add(jButton5);
+        btXoa.setText("Xóa");
+        btXoa.setPreferredSize(new java.awt.Dimension(120, 23));
+        btXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btXoaActionPerformed(evt);
+            }
+        });
+        pnTable.add(btXoa);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -180,11 +184,26 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btChiTietActionPerformed
 
+    private void btXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaActionPerformed
+        int rowSelect = tbKhoaHoc.getSelectedRow();
+        if(rowSelect != -1){
+            TableModel tab = tbKhoaHoc.getModel();
+            int ID = (int)tab.getValueAt(rowSelect, 0);
+            for(var o : dsListKH){
+                if(ID == o.getIDKhoaHoc()){
+                    dsListKH.remove(o);
+                    break;
+                }
+            }
+        }
+        UI.changePnController(new pnKhoaHoc());
+    }//GEN-LAST:event_btXoaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btChiTiet;
     private javax.swing.JButton btThemKhoaHoc;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btXoa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnTable;

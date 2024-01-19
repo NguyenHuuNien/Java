@@ -16,7 +16,7 @@ public class UI extends javax.swing.JFrame {
         initComponents();
         //SetupData();
         dsKH = SaveLoad.Load(path);
-        pnControl.add(new pnKhoaHoc(dsKH));
+        pnControl.add(new pnKhoaHoc());
     }
     public static void addKhoaHoc(KhoaHoc newKH){
         dsKH.add(newKH);
