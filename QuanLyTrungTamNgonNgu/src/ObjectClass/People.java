@@ -70,7 +70,8 @@ public class People implements Serializable{
 
     @Override
     public String toString() {
-        return "People{" + "ID=" + ID + ", Name=" + Name + ", ChucVu=" + Tuoi + ", SoDienThoai=" + SoDienThoai + ", QueQuan=" + QueQuan + '}';
+        String s = this.ID + this.Name + this.QueQuan + this.SoDienThoai + this.gioiTinh + this.Tuoi;
+        return s;
     }
     
 }

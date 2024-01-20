@@ -95,5 +95,11 @@ public class KhoaHoc implements Serializable{
     public void setThoiGian(String thoiGian) {
         this.thoiGian = thoiGian;
     }
+
+    @Override
+    public String toString() {
+        String s = this.tenKhoaHoc + this.thoiGian + this.IDKhoaHoc + this.gia + this.giangVien.getName() + this.soLuong;
+        return s;
+    }
     
 }

@@ -21,5 +21,10 @@ public class HocVien extends People implements Serializable{
     public void setHocLuc(String HocLuc) {
         this.HocLuc = HocLuc;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+this.HocLuc;
+    }
     
 }

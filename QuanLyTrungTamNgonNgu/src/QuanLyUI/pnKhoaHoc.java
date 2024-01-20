@@ -11,6 +11,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     private List<KhoaHoc> dsListKH = UI.getDSKhoaHoc();
     public pnKhoaHoc() {
         initComponents();
+        UI.changStatePanelKhoaHoc();
         SetupTable();
         setSizeColumn();
     }

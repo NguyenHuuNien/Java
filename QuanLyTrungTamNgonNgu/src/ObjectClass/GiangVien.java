@@ -22,5 +22,10 @@ public class GiangVien extends People implements Serializable{
     public void setTrinhDo(String TrinhDo) {
         this.TrinhDo = TrinhDo;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+this.TrinhDo;
+    }
     
 }

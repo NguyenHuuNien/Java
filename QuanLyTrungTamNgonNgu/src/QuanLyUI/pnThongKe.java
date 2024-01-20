@@ -12,6 +12,7 @@ public class pnThongKe extends javax.swing.JPanel {
     private List<KhoaHoc> dsKhoaHoc = UI.getDSKhoaHoc();
     public pnThongKe() {
         initComponents();
+        UI.changStatePanelKhoaHoc();
         ThongKeBang();
         SetSize();
     }

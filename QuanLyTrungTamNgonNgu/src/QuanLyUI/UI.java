@@ -9,11 +9,20 @@ import saveLoad.SaveLoad;
 public class UI extends javax.swing.JFrame {
     private static List<KhoaHoc> dsKH = new ArrayList<>();
     private static List<KhoaHoc> dsKhoaHoc_Loc = new ArrayList<>();
+    private static boolean isOpenPanelKhoaHoc = true;
+    
     public UI() {
         initComponents();
         dsKH = SaveLoad.Load();
         LocDanhSach("Tất cả");
         pnControl.add(new pnKhoaHoc());
+    }
+    public static void changStatePanelKhoaHoc(){
+        isOpenPanelKhoaHoc = true;
+        cbSX.removeAllItems();
+        cbSX.addItem("Mã khóa học");
+        cbSX.addItem("Tên khóa học");
+        cbSX.addItem("Giá khóa học");
     }
     public static void addKhoaHoc(KhoaHoc newKH){
         dsKH.add(newKH);
@@ -22,7 +31,14 @@ public class UI extends javax.swing.JFrame {
         return dsKhoaHoc_Loc;
     }
     public static void changePnController(JPanel newPanel){
+        isOpenPanelKhoaHoc = false;
         SaveLoad.Save(dsKH);
+        
+        cbSX.removeAllItems();
+        cbSX.addItem("Mã học viên");
+        cbSX.addItem("Tên học viên");
+        cbSX.addItem("Tuổi học viên");
+        
         pnControl.removeAll();
         pnControl.add(newPanel);
         pnControl.revalidate();
@@ -46,6 +62,15 @@ public class UI extends javax.swing.JFrame {
             }
         }
     }
+    
+    private void searchController(List<KhoaHoc> ds, String text){
+        List<KhoaHoc> tmp = new ArrayList<>();
+        for(var o : ds){
+            if(ds.toString().contains(text)){
+                tmp.add(o);
+            }
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -65,13 +90,13 @@ public class UI extends javax.swing.JFrame {
         txtTitle = new javax.swing.JLabel();
         pnSapXep = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cbSX = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jButton2 = new javax.swing.JButton();
+        rbTang = new javax.swing.JRadioButton();
+        rbGIam = new javax.swing.JRadioButton();
+        btOK = new javax.swing.JButton();
         pnSpace2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         pnControl = new javax.swing.JPanel();
@@ -166,58 +191,58 @@ public class UI extends javax.swing.JFrame {
         jLabel7.setPreferredSize(new java.awt.Dimension(60, 16));
         pnSapXep.add(jLabel7);
 
-        jTextField1.setPreferredSize(new java.awt.Dimension(120, 22));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.setPreferredSize(new java.awt.Dimension(120, 22));
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtSearchActionPerformed(evt);
             }
         });
-        pnSapXep.add(jTextField1);
+        pnSapXep.add(txtSearch);
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("       Sắp xếp theo:");
         jLabel5.setPreferredSize(new java.awt.Dimension(100, 16));
         pnSapXep.add(jLabel5);
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã khóa học", "Tên khóa học", "Thời gian học", "Số lượng đăng ký", "Giá khóa học" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+        cbSX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mã khóa học", "Tên khóa học", "Giá khóa học", "Mã sinh viên", "Tên sinh viên", "Tuổi sinh viên" }));
+        cbSX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
+                cbSXActionPerformed(evt);
             }
         });
-        pnSapXep.add(jComboBox2);
+        pnSapXep.add(cbSX);
 
         jLabel6.setText("    Cách thức:");
         pnSapXep.add(jLabel6);
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setSelected(true);
-        jRadioButton1.setText("Tăng");
-        jRadioButton1.setPreferredSize(new java.awt.Dimension(60, 21));
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rbTang);
+        rbTang.setSelected(true);
+        rbTang.setText("Tăng");
+        rbTang.setPreferredSize(new java.awt.Dimension(60, 21));
+        rbTang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbTangActionPerformed(evt);
             }
         });
-        pnSapXep.add(jRadioButton1);
+        pnSapXep.add(rbTang);
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Giảm");
-        jRadioButton2.setPreferredSize(new java.awt.Dimension(60, 21));
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonGroup1.add(rbGIam);
+        rbGIam.setText("Giảm");
+        rbGIam.setPreferredSize(new java.awt.Dimension(60, 21));
+        rbGIam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                rbGIamActionPerformed(evt);
             }
         });
-        pnSapXep.add(jRadioButton2);
+        pnSapXep.add(rbGIam);
 
-        jButton2.setText("OK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btOK.setText("OK");
+        btOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btOKActionPerformed(evt);
             }
         });
-        pnSapXep.add(jButton2);
+        pnSapXep.add(btOK);
 
         getContentPane().add(pnSapXep);
 
@@ -247,21 +272,21 @@ public class UI extends javax.swing.JFrame {
         changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_cbNgonNguActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void cbSXActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSXActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+    }//GEN-LAST:event_cbSXActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rbTangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbTangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rbTangActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void rbGIamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbGIamActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_rbGIamActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         UI.changePnController(new pnKhoaHoc());
@@ -275,9 +300,12 @@ public class UI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_cbNgonNguItemStateChanged
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
+        String search = txtSearch.getText();
+        String ycCombo = (String)cbSX.getSelectedItem();
+        List<KhoaHoc> tmp = new ArrayList<>();
         
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btOKActionPerformed
 
     /**
      * @param args the command line arguments
@@ -315,12 +343,12 @@ public class UI extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btOK;
     private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JComboBox<String> cbNgonNgu;
+    private static javax.swing.JComboBox<String> cbSX;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -328,9 +356,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JTextField jTextField1;
     private static javax.swing.JPanel pnControl;
     private javax.swing.JPanel pnInfor;
     private javax.swing.JPanel pnSapXep;
@@ -338,6 +363,9 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel pnSpace2;
     private javax.swing.JPanel pnTitle;
     private javax.swing.JPanel pnTitleKhoaHoc;
+    private javax.swing.JRadioButton rbGIam;
+    private javax.swing.JRadioButton rbTang;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JLabel txtTitle;
     // End of variables declaration//GEN-END:variables
 }
