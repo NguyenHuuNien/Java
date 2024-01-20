@@ -213,8 +213,6 @@ public class UI extends javax.swing.JFrame {
         pnSpace2.add(jPanel6);
 
         getContentPane().add(pnSpace2);
-
-        pnControl.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
         getContentPane().add(pnControl);
 
         pack();

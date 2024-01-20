@@ -10,7 +10,8 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     private List<KhoaHoc> dsListKH = UI.getDSKhoaHoc();
     public pnKhoaHoc() {
         initComponents();
-        SetupTable();
+        //SetupTable();
+        SetData();
         setSizeColumn();
     }
     private void setSizeColumn(){
@@ -21,6 +22,19 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         columnModel.getColumn(3).setPreferredWidth(30);
         columnModel.getColumn(4).setPreferredWidth(35);
         columnModel.getColumn(5).setPreferredWidth(50);
+    }
+    
+    private void SetData(){
+        DefaultTableModel dtm = new DefaultTableModel();
+        for(var o : dsListKH){
+            Object[] data = {o.getIDKhoaHoc(), o.getTenKhoaHoc(),
+                o.getGiangVien()!=null?o.getGiangVien().getName():"",
+               o.getSoLuong()[0] + "/" + o.getSoLuong()[1],
+               o.getThoiGian(), o.getGia() + "VND"
+            };
+            dtm.addRow(data);
+        }
+        tbKhoaHoc.setModel(dtm);
     }
     private void SetupTable(){
         Object[][] data = new Object[dsListKH.size()+1][6];
@@ -42,8 +56,10 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             data[i][5] = gia;
         }
         String[] colName = {"ID","Tên","Giảng viên","Số lượng","Ngày","Giá"};
-        DefaultTableModel dfTable = new DefaultTableModel(data,colName);
+        DefaultTableModel dfTable = new DefaultTableModel(data, colName);
+        dfTable.setRowCount(dsListKH.size()+1);
         tbKhoaHoc.setModel(dfTable);
+        System.out.println(data[dsListKH.size()-1][1]);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -61,9 +77,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
 
         pnTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khóa học", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 14))); // NOI18N
         pnTable.setPreferredSize(new java.awt.Dimension(680, 460));
-        pnTable.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 20));
-
-        jPanel1.setLayout(new java.awt.GridLayout(1, 0, 100, 0));
 
         jScrollPane2.setAutoscrolls(true);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(650, 350));
@@ -113,9 +126,16 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             tbKhoaHoc.getColumnModel().getColumn(5).setPreferredWidth(50);
         }
 
-        jPanel1.add(jScrollPane2);
-
-        pnTable.add(jPanel1);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         btThemKhoaHoc.setText("Thêm khóa học");
         btThemKhoaHoc.setPreferredSize(new java.awt.Dimension(120, 23));
@@ -124,7 +144,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 btThemKhoaHocActionPerformed(evt);
             }
         });
-        pnTable.add(btThemKhoaHoc);
 
         btChiTiet.setText("Chi tiết");
         btChiTiet.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -133,7 +152,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 btChiTietActionPerformed(evt);
             }
         });
-        pnTable.add(btChiTiet);
 
         btXoa.setText("Xóa");
         btXoa.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -142,7 +160,33 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 btXoaActionPerformed(evt);
             }
         });
-        pnTable.add(btXoa);
+
+        javax.swing.GroupLayout pnTableLayout = new javax.swing.GroupLayout(pnTable);
+        pnTable.setLayout(pnTableLayout);
+        pnTableLayout.setHorizontalGroup(
+            pnTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTableLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnTableLayout.createSequentialGroup()
+                .addGap(125, 125, 125)
+                .addComponent(btThemKhoaHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(btXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnTableLayout.setVerticalGroup(
+            pnTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnTableLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(pnTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btThemKhoaHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
