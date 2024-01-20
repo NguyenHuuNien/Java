@@ -3,7 +3,6 @@ package QuanLyUI;
 import ObjectClass.KhoaHoc;
 import java.util.List;
 import ObjectClass.HocVien;
-import java.awt.Dimension;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -52,7 +51,6 @@ public class pnThanhVien extends javax.swing.JPanel {
         String[] colName = {"ID","Họ và tên","Tuổi","Giới tính","Số điện thoại","Quê quán","Năng lực"};
         DefaultTableModel dfTable = new DefaultTableModel(data,colName);
         tbThanhVien.setModel(dfTable);
-        tbThanhVien.setPreferredSize(new Dimension(550, dsHV.size()>10?50*dsHV.size():320));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -77,7 +75,9 @@ public class pnThanhVien extends javax.swing.JPanel {
         flowLayout1.setAlignOnBaseline(true);
         pnTable.setLayout(flowLayout1);
 
+        jScrollPane1.setAutoscrolls(true);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(650, 350));
+        jScrollPane1.setViewportView(tbThanhVien);
 
         tbThanhVien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,7 +95,7 @@ public class pnThanhVien extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        tbThanhVien.setPreferredSize(new java.awt.Dimension(500, 30));
+        tbThanhVien.setPreferredSize(new java.awt.Dimension(500, 1000));
         tbThanhVien.setRowHeight(30);
         tbThanhVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbThanhVien.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);

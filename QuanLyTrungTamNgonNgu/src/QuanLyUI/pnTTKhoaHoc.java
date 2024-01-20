@@ -29,6 +29,9 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        cbNgonNgu = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -85,7 +88,7 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
 
         pnCenter.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin khóa học", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI Black", 2, 18), new java.awt.Color(51, 51, 255))); // NOI18N
         pnCenter.setPreferredSize(new java.awt.Dimension(680, 415));
-        pnCenter.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
+        pnCenter.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 8));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(670, 45));
 
@@ -115,6 +118,21 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
         jPanel2.add(txtName);
 
         pnCenter.add(jPanel2);
+
+        jPanel8.setPreferredSize(new java.awt.Dimension(670, 45));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Ngôn ngữ");
+        jLabel5.setPreferredSize(new java.awt.Dimension(150, 35));
+        jPanel8.add(jLabel5);
+
+        cbNgonNgu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
+        cbNgonNgu.setSelectedIndex(-1);
+        cbNgonNgu.setPreferredSize(new java.awt.Dimension(200, 35));
+        jPanel8.add(cbNgonNgu);
+
+        pnCenter.add(jPanel8);
 
         jPanel3.setPreferredSize(new java.awt.Dimension(670, 45));
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
@@ -216,7 +234,11 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
             khoaHoc.setGia(Integer.parseInt(txtGia.getText()));
         }
         
-        khoaHoc.setNgonNgu(UI.getNgonNgu());
+        if(cbNgonNgu.getSelectedIndex() != -1){
+            khoaHoc.setNgonNgu((String)cbNgonNgu.getSelectedItem());
+        }else{
+            txtError.setText("Vui lòng chọn ngôn ngữ cho khóa học!");
+        }
         
         if(Integer.parseInt(txtMaxNum.getText())<1 || txtMaxNum.getText().equals("")){
             txtError.setText("Vui lòng thiết lập lại số lượng học viên tối đa!");
@@ -266,9 +288,11 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
     private javax.swing.JButton btSave;
     private javax.swing.JButton btnAddGV;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbNgonNgu;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
@@ -278,6 +302,7 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JPanel pnCenter;
     private javax.swing.JPanel pnTop;

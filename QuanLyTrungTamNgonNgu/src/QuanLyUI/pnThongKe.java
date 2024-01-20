@@ -3,7 +3,6 @@ package QuanLyUI;
 
 import ObjectClass.HocVien;
 import ObjectClass.KhoaHoc;
-import java.awt.Dimension;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -12,7 +11,6 @@ public class pnThongKe extends javax.swing.JPanel {
     private List<KhoaHoc> dsKhoaHoc = UI.getDSKhoaHoc();
     public pnThongKe() {
         initComponents();
-        UI.changStatePanelKhoaHoc();
         ThongKeBang();
         SetSize();
     }
@@ -41,7 +39,7 @@ public class pnThongKe extends javax.swing.JPanel {
             TslGioi += slGioi;
             TslKha += slKha;
             TslKhac += slKhac;
-            data[i][0] = i;
+            data[i][0] = i+1;
             data[i][1] = dsKhoaHoc.get(i).getTenKhoaHoc();
             data[i][2] = ChiaLamTron(slGioi, dsKhoaHoc.get(i).getSoLuong()[0]) * 100 + "%";
             data[i][3] = ChiaLamTron(slKha, dsKhoaHoc.get(i).getSoLuong()[0]) * 100 + "%";
@@ -49,7 +47,7 @@ public class pnThongKe extends javax.swing.JPanel {
             data[i][5] = dsKhoaHoc.get(i).getSoLuong()[0] + "/" + dsKhoaHoc.get(i).getSoLuong()[1];
             data[i][6] = dsKhoaHoc.get(i).getSoLuong()[0] + " x " + dsKhoaHoc.get(i).getGia() + " = " + dsKhoaHoc.get(i).getGia() * dsKhoaHoc.get(i).getSoLuong()[0] + " VND";
         }
-//        data[dsKhoaHoc.size()][0] = "";
+        data[dsKhoaHoc.size()][0] = "";
         data[dsKhoaHoc.size()][1] = "TỔNG CÁC KHÓA HỌC";
         data[dsKhoaHoc.size()][2] = ChiaLamTron(TslGioi,tongSV) * 100 + "%";
         data[dsKhoaHoc.size()][3] = ChiaLamTron(TslKha, tongSV) * 100 + "%";
@@ -60,7 +58,6 @@ public class pnThongKe extends javax.swing.JPanel {
         String[] col = {"STT", "Tên khóa học", "Giỏi" , "Khá", "Khác", "Chỉ tiêu" , "Doanh thu"};
         DefaultTableModel dtm = new DefaultTableModel(data,col);
         tbThongKe.setModel(dtm);
-        tbThongKe.setPreferredSize(new Dimension(550, dsKhoaHoc.size()>10?50*dsKhoaHoc.size():320));
         
         txtDoanhThu.setText(tongDoanhThu + " VND");
         txtThue.setText("");
@@ -104,6 +101,7 @@ public class pnThongKe extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(650, 310));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê học lực", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 15), new java.awt.Color(0, 0, 255))); // NOI18N
+        jScrollPane1.setAutoscrolls(true);
         jScrollPane1.setPreferredSize(new java.awt.Dimension(650, 300));
 
         tbThongKe.setModel(new javax.swing.table.DefaultTableModel(
@@ -125,7 +123,7 @@ public class pnThongKe extends javax.swing.JPanel {
                 return types [columnIndex];
             }
         });
-        tbThongKe.setPreferredSize(new java.awt.Dimension(630, 300));
+        tbThongKe.setPreferredSize(new java.awt.Dimension(630, 500));
         tbThongKe.setRowHeight(50);
         jScrollPane1.setViewportView(tbThongKe);
 

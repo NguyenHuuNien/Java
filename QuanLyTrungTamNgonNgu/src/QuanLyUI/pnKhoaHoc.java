@@ -1,7 +1,6 @@
 package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
-import java.awt.Dimension;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -11,7 +10,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     private List<KhoaHoc> dsListKH = UI.getDSKhoaHoc();
     public pnKhoaHoc() {
         initComponents();
-        UI.changStatePanelKhoaHoc();
         SetupTable();
         setSizeColumn();
     }
@@ -25,7 +23,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         columnModel.getColumn(5).setPreferredWidth(50);
     }
     private void SetupTable(){
-        Object[][] data = new Object[dsListKH.size()][6];
+        Object[][] data = new Object[dsListKH.size()+1][6];
         for(int i = 0; i < dsListKH.size(); i++){
             data[i][0] = dsListKH.get(i).getIDKhoaHoc();
             data[i][1] = dsListKH.get(i).getTenKhoaHoc();
@@ -46,7 +44,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         String[] colName = {"ID","Tên","Giảng viên","Số lượng","Ngày","Giá"};
         DefaultTableModel dfTable = new DefaultTableModel(data,colName);
         tbKhoaHoc.setModel(dfTable);
-        tbKhoaHoc.setPreferredSize(new Dimension(550, dsListKH.size()>10?50*dsListKH.size():320));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -68,7 +65,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
 
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 100, 0));
 
+        jScrollPane2.setAutoscrolls(true);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(650, 350));
+        jScrollPane2.setViewportView(tbKhoaHoc);
 
         tbKhoaHoc.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
