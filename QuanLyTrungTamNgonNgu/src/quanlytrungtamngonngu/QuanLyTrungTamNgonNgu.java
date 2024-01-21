@@ -107,7 +107,6 @@ public class QuanLyTrungTamNgonNgu {
             String address = addresses[random.nextInt(addresses.length)];
             int maxStudents = random.nextInt(100) + 1;
             String startDate = generateRandomDate();
-            
             String gioitinh = sex[random.nextInt(sex.length)];
             String name = ho[random.nextInt(ho.length)] + " "+ tendem[random.nextInt(tendem.length)] + " " +
                     (gioitinh.equals("Nam")?maleNames[random.nextInt(maleNames.length)]:
