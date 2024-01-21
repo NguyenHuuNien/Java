@@ -263,8 +263,8 @@ public class pnTTGiangVien extends javax.swing.JPanel {
                 }
             }
             int tuoi = Integer.parseInt(txtAge.getText());
-            if(tuoi<1 || tuoi > 100){
-                txtError.setText("Tuổi: Trường hợp này trung tâm từ chối nhận việc!");
+            if(tuoi<16 || tuoi > 60){
+                txtError.setText("Tuổi: Trường hợp này trung tâm từ chối nhận việc! Chỉ nhận từ 16->60 tuổi!");
                 return;
             }
             gv.setTuoi(tuoi);
@@ -311,8 +311,10 @@ public class pnTTGiangVien extends javax.swing.JPanel {
     private void BackPrevPanel(){
         if(prevCallThisPanel instanceof pnTTKhoaHoc){
             ((pnTTKhoaHoc)prevCallThisPanel).setTenGiangVien();
+            UI.changePnController(prevCallThisPanel);
+            return;
         }
-        UI.changePnController(prevCallThisPanel);
+        UI.changePnController(new pnThanhVien(khoaHoc));
     }
     
     private void rdNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNamActionPerformed

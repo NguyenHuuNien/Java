@@ -3,6 +3,7 @@ package QuanLyUI;
 import ObjectClass.KhoaHoc;
 import java.util.List;
 import ObjectClass.HocVien;
+import java.awt.Dimension;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
@@ -50,6 +51,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         }
         String[] colName = {"ID","Họ và tên","Tuổi","Giới tính","Số điện thoại","Quê quán","Năng lực"};
         DefaultTableModel dfTable = new DefaultTableModel(data,colName);
+        tbThanhVien.setPreferredSize(new Dimension(500,30*(dsHV.size()+1)));
         tbThanhVien.setModel(dfTable);
     }
     @SuppressWarnings("unchecked")

@@ -3,6 +3,7 @@ package QuanLyUI;
 
 import ObjectClass.HocVien;
 import ObjectClass.KhoaHoc;
+import java.awt.Dimension;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -57,6 +58,7 @@ public class pnThongKe extends javax.swing.JPanel {
         
         String[] col = {"STT", "Tên khóa học", "Giỏi" , "Khá", "Khác", "Chỉ tiêu" , "Doanh thu"};
         DefaultTableModel dtm = new DefaultTableModel(data,col);
+        tbThongKe.setPreferredSize(new Dimension(665,50*(dsKhoaHoc.size()+1)));
         tbThongKe.setModel(dtm);
         
         txtDoanhThu.setText(tongDoanhThu + " VND");
@@ -98,7 +100,7 @@ public class pnThongKe extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(680, 460));
         setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(650, 310));
+        jPanel1.setPreferredSize(new java.awt.Dimension(665, 310));
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thống kê học lực", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 15), new java.awt.Color(0, 0, 255))); // NOI18N
         jScrollPane1.setAutoscrolls(true);

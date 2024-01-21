@@ -45,7 +45,7 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
         txtGia = new javax.swing.JTextField();
         jPanel7 = new javax.swing.JPanel();
         txtNangLuc = new javax.swing.JLabel();
-        txtNgay = new javax.swing.JTextField();
+        txtDayBegin = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(680, 57));
         setPreferredSize(new java.awt.Dimension(680, 460));
@@ -198,8 +198,8 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
         txtNangLuc.setPreferredSize(new java.awt.Dimension(150, 35));
         jPanel7.add(txtNangLuc);
 
-        txtNgay.setPreferredSize(new java.awt.Dimension(200, 35));
-        jPanel7.add(txtNgay);
+        txtDayBegin.setPreferredSize(new java.awt.Dimension(200, 35));
+        jPanel7.add(txtDayBegin);
 
         pnCenter.add(jPanel7);
 
@@ -240,6 +240,12 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
             txtError.setText("Vui lòng chọn ngôn ngữ cho khóa học!");
         }
         
+        for(int i=0;i<txtMaxNum.getText().length();i++){
+                if(txtMaxNum.getText().charAt(i)>'9' || txtMaxNum.getText().charAt(i) < '0' ){
+                    txtError.setText("Vui lòng nhập đúng định dạng số lượng học viên!");
+                    return;
+                }
+            }
         if(Integer.parseInt(txtMaxNum.getText())<1 || txtMaxNum.getText().equals("")){
             txtError.setText("Vui lòng thiết lập lại số lượng học viên tối đa!");
             return;
@@ -247,10 +253,10 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
             khoaHoc.setMaxSoLuong(Integer.parseInt(txtMaxNum.getText()));
         }
         
-        if(txtNgay.getText().length()!=10){
+        if(txtDayBegin.getText().length()!=10){
             txtError.setText("Vui lòng nhập lại ngày bắt đầu!");
         }else{
-            String s = txtNgay.getText();
+            String s = txtDayBegin.getText();
             if(s.charAt(2) != '/' && s.charAt(5) != '/'){
                 txtError.setText("Vui lòng nhập đúng định dạng ngày bắt đầu học (dd/MM/yyyy)");
                 return;
@@ -265,10 +271,10 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
                 }
             }
             if(Integer.parseInt(s.substring(0, 2))<1||Integer.parseInt(s.substring(0, 2))>31 ||
-                    Integer.parseInt(s.substring(3, 5))<1 || Integer.parseInt(s.substring(3, 5))>12 ||
-                    Integer.parseInt(s.substring(6))<0){
+                Integer.parseInt(s.substring(3, 5))<1 || Integer.parseInt(s.substring(3, 5))>12 ||
+                Integer.parseInt(s.substring(6))<0){
                 txtError.setText("Dữ liệu ngày bắt đầu không hợp lệ!");
-                    return;
+                return;
             }
             khoaHoc.setThoiGian(s);
         }
@@ -306,13 +312,13 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JPanel pnCenter;
     private javax.swing.JPanel pnTop;
+    private javax.swing.JTextField txtDayBegin;
     private javax.swing.JLabel txtError;
     private javax.swing.JTextField txtGia;
     private javax.swing.JLabel txtID;
     private javax.swing.JTextField txtMaxNum;
     private javax.swing.JTextField txtName;
     private javax.swing.JLabel txtNangLuc;
-    private javax.swing.JTextField txtNgay;
     private javax.swing.JTextField txtTenGV;
     // End of variables declaration//GEN-END:variables
 }

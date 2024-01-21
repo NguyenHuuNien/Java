@@ -265,8 +265,8 @@ public class pnTTHocVien extends javax.swing.JPanel {
                 }
             }
             int tuoi = Integer.parseInt(txtAge.getText());
-            if(tuoi<1 || tuoi > 100){
-                txtError.setText("Tuổi: Trường hợp này trung tâm từ chối đào tạo!");
+            if(tuoi<4 || tuoi > 90){
+                txtError.setText("Tuổi: Trường hợp này trung tâm từ chối đào tạo! Chỉ nhận 4->90 tuổi!");
                 return;
             }
             a.setTuoi(tuoi);

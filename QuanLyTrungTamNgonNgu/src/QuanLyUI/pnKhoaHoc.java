@@ -1,6 +1,7 @@
 package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
+import java.awt.Dimension;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -16,8 +17,8 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     }
     private void setSizeColumn(){
         TableColumnModel columnModel = tbKhoaHoc.getColumnModel();
-        columnModel.getColumn(0).setPreferredWidth(40);
-        columnModel.getColumn(1).setPreferredWidth(150);
+        columnModel.getColumn(0).setPreferredWidth(20);
+        columnModel.getColumn(1).setPreferredWidth(200);
         columnModel.getColumn(2).setPreferredWidth(125);
         columnModel.getColumn(3).setPreferredWidth(30);
         columnModel.getColumn(4).setPreferredWidth(35);
@@ -25,7 +26,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     }
     
     private void SetData(){
+        String[] colName = {"ID","Tên","Giảng viên","Số lượng","Ngày","Giá"};
         DefaultTableModel dtm = new DefaultTableModel();
+        dtm.setColumnIdentifiers(colName);
         for(var o : dsListKH){
             Object[] data = {o.getIDKhoaHoc(), o.getTenKhoaHoc(),
                 o.getGiangVien()!=null?o.getGiangVien().getName():"",
@@ -34,6 +37,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             };
             dtm.addRow(data);
         }
+        tbKhoaHoc.setPreferredSize(new Dimension(550,50*dsListKH.size()));
         tbKhoaHoc.setModel(dtm);
     }
     private void SetupTable(){
