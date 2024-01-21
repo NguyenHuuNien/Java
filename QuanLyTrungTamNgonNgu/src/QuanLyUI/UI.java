@@ -51,7 +51,7 @@ public class UI extends javax.swing.JFrame {
     private List<KhoaHoc> searchController(List<KhoaHoc> ds, String text){
         List<KhoaHoc> tmp = new ArrayList<>();
         for(var o : ds){
-            if(ds.toString().contains(text)){
+            if((o.toString().toLowerCase()).contains(text.toLowerCase())){
                 tmp.add(o);
             }
         }
@@ -241,8 +241,8 @@ public class UI extends javax.swing.JFrame {
 
     private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
         String search = txtSearch.getText();
-        dsKhoaHoc_Loc = searchController(dsKhoaHoc_Loc, search);
         LocDanhSach((String)cbNgonNgu.getSelectedItem());
+        dsKhoaHoc_Loc = searchController(dsKhoaHoc_Loc, search);
         changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_btOKActionPerformed
 
