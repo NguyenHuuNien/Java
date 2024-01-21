@@ -71,12 +71,12 @@ public class pnThongKe extends javax.swing.JPanel {
     private void SetSize(){
         TableColumnModel tcm = tbThongKe.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(5);
-        tcm.getColumn(1).setPreferredWidth(150);
-        tcm.getColumn(2).setPreferredWidth(15);
-        tcm.getColumn(3).setPreferredWidth(15);
-        tcm.getColumn(4).setPreferredWidth(15);
-        tcm.getColumn(5).setPreferredWidth(20);
-        tcm.getColumn(6).setPreferredWidth(150);
+        tcm.getColumn(1).setPreferredWidth(250);
+        tcm.getColumn(2).setPreferredWidth(20);
+        tcm.getColumn(3).setPreferredWidth(20);
+        tcm.getColumn(4).setPreferredWidth(20);
+        tcm.getColumn(5).setPreferredWidth(50);
+        tcm.getColumn(6).setPreferredWidth(125);
     }
     
     @SuppressWarnings("unchecked")
