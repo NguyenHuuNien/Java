@@ -19,9 +19,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         TableColumnModel columnModel = tbKhoaHoc.getColumnModel();
         columnModel.getColumn(0).setPreferredWidth(20);
         columnModel.getColumn(1).setPreferredWidth(200);
-        columnModel.getColumn(2).setPreferredWidth(125);
+        columnModel.getColumn(2).setPreferredWidth(110);
         columnModel.getColumn(3).setPreferredWidth(30);
-        columnModel.getColumn(4).setPreferredWidth(35);
+        columnModel.getColumn(4).setPreferredWidth(42);
         columnModel.getColumn(5).setPreferredWidth(50);
     }
     
@@ -73,14 +73,17 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbKhoaHoc = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         btThemKhoaHoc = new javax.swing.JButton();
-        btChiTiet = new javax.swing.JButton();
+        txtThongTin = new javax.swing.JButton();
+        btThanhVien = new javax.swing.JButton();
         btXoa = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(680, 460));
 
         pnTable.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách khóa học", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Arial", 1, 14))); // NOI18N
         pnTable.setPreferredSize(new java.awt.Dimension(680, 460));
+        pnTable.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
         jScrollPane2.setAutoscrolls(true);
         jScrollPane2.setPreferredSize(new java.awt.Dimension(650, 350));
@@ -141,21 +144,38 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
+        pnTable.add(jPanel1);
+
+        jPanel2.setMinimumSize(new java.awt.Dimension(600, 23));
+        jPanel2.setPreferredSize(new java.awt.Dimension(650, 30));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 0));
+
         btThemKhoaHoc.setText("Thêm khóa học");
-        btThemKhoaHoc.setPreferredSize(new java.awt.Dimension(120, 23));
+        btThemKhoaHoc.setPreferredSize(new java.awt.Dimension(130, 23));
         btThemKhoaHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btThemKhoaHocActionPerformed(evt);
             }
         });
+        jPanel2.add(btThemKhoaHoc);
 
-        btChiTiet.setText("Chi tiết");
-        btChiTiet.setPreferredSize(new java.awt.Dimension(100, 23));
-        btChiTiet.addActionListener(new java.awt.event.ActionListener() {
+        txtThongTin.setText("Thông tin");
+        txtThongTin.setPreferredSize(new java.awt.Dimension(100, 23));
+        txtThongTin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btChiTietActionPerformed(evt);
+                txtThongTinActionPerformed(evt);
             }
         });
+        jPanel2.add(txtThongTin);
+
+        btThanhVien.setText("Thành viên");
+        btThanhVien.setPreferredSize(new java.awt.Dimension(100, 23));
+        btThanhVien.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btThanhVienActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btThanhVien);
 
         btXoa.setText("Xóa");
         btXoa.setPreferredSize(new java.awt.Dimension(100, 23));
@@ -164,33 +184,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 btXoaActionPerformed(evt);
             }
         });
+        jPanel2.add(btXoa);
 
-        javax.swing.GroupLayout pnTableLayout = new javax.swing.GroupLayout(pnTable);
-        pnTable.setLayout(pnTableLayout);
-        pnTableLayout.setHorizontalGroup(
-            pnTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnTableLayout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(pnTableLayout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(btThemKhoaHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
-                .addComponent(btXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        pnTableLayout.setVerticalGroup(
-            pnTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnTableLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(20, 20, 20)
-                .addGroup(pnTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btThemKhoaHoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btChiTiet, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btXoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
+        pnTable.add(jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -215,10 +211,12 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btThemKhoaHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemKhoaHocActionPerformed
-        UI.changePnController(new pnTTKhoaHoc());
+        KhoaHoc newKhoaHoc = new KhoaHoc();
+        UI.addKhoaHoc(newKhoaHoc);
+        UI.changePnController(new pnTTKhoaHoc(newKhoaHoc));
     }//GEN-LAST:event_btThemKhoaHocActionPerformed
 
-    private void btChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChiTietActionPerformed
+    private void btThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThanhVienActionPerformed
         int rowSelected = tbKhoaHoc.getSelectedRow();
         if(rowSelected != -1){
             TableModel tab = tbKhoaHoc.getModel();
@@ -229,7 +227,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 }
             }
         }
-    }//GEN-LAST:event_btChiTietActionPerformed
+    }//GEN-LAST:event_btThanhVienActionPerformed
 
     private void btXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaActionPerformed
         int rowSelect = tbKhoaHoc.getSelectedRow();
@@ -246,14 +244,30 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         UI.changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_btXoaActionPerformed
 
+    private void txtThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThongTinActionPerformed
+        int rowSelect = tbKhoaHoc.getSelectedRow();
+        if(rowSelect != -1){
+            TableModel tbModel = tbKhoaHoc.getModel();
+            int ID = (int)tbModel.getValueAt(rowSelect, 0);
+            for(var o : dsListKH){
+                if(o.getIDKhoaHoc() == ID){
+                    UI.changePnController(new pnTTKhoaHoc(o));
+                    return;
+                }
+            }
+        }
+    }//GEN-LAST:event_txtThongTinActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btChiTiet;
+    private javax.swing.JButton btThanhVien;
     private javax.swing.JButton btThemKhoaHoc;
     private javax.swing.JButton btXoa;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel pnTable;
     private javax.swing.JTable tbKhoaHoc;
+    private javax.swing.JButton txtThongTin;
     // End of variables declaration//GEN-END:variables
 }
