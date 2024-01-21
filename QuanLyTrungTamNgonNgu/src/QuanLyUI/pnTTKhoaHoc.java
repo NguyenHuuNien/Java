@@ -4,15 +4,19 @@ import ObjectClass.GiangVien;
 import ObjectClass.KhoaHoc;
 
 public class pnTTKhoaHoc extends javax.swing.JPanel {
-    private GiangVien gv = new GiangVien();
+    private GiangVien gv ;
     private KhoaHoc khoaHoc;
-    public pnTTKhoaHoc() {
+    public pnTTKhoaHoc(KhoaHoc kh) {
         initComponents();
-        khoaHoc = new KhoaHoc();
-        txtTenGV.setText(gv.getName());
+        khoaHoc = kh;
+        if(khoaHoc.getGiangVien()==null){
+            gv = new GiangVien();
+        }else{
+            gv = khoaHoc.getGiangVien();
+            setData();
+        }
         txtID.setText(khoaHoc.getIDKhoaHoc()+"");
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -206,6 +210,15 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
         add(pnCenter);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void setData(){
+        txtName.setText(khoaHoc.getTenKhoaHoc());
+        txtGia.setText(String.valueOf(khoaHoc.getGia()));
+        txtDayBegin.setText(khoaHoc.getThoiGian());
+        txtTenGV.setText(gv.getName());
+        txtMaxNum.setText(String.valueOf(khoaHoc.getSoLuong()[1]));
+        cbNgonNgu.setSelectedItem(khoaHoc.getNgonNgu());
+    }
+    
     private void btSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSaveActionPerformed
         if(txtName.getText().equals("")){
             txtError.setText("Vui lòng nhập tên khóa học!");
@@ -278,7 +291,6 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
             }
             khoaHoc.setThoiGian(s);
         }
-        UI.addKhoaHoc(khoaHoc);
         UI.changePnController(new pnKhoaHoc());
     }//GEN-LAST:event_btSaveActionPerformed
 
