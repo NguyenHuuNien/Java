@@ -101,5 +101,4 @@ public class KhoaHoc implements Serializable{
         String s = this.tenKhoaHoc + this.thoiGian + this.IDKhoaHoc + this.gia + this.giangVien.getName() + this.soLuong;
         return s;
     }
-    
 }
