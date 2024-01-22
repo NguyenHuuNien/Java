@@ -20,6 +20,7 @@ public class pnThongKe extends javax.swing.JPanel {
         int TslGioi = 0, TslKha = 0, TslKhac = 0;
         int TongChiTieu = 0;
         int tongSV = 0;
+        int tongThuThucTe = 0;
         int tongDoanhThu = 0;
         Object[][] data = new Object[dsKhoaHoc.size()+1][7];
         for(int i = 0; i<dsKhoaHoc.size();i++){
@@ -27,6 +28,7 @@ public class pnThongKe extends javax.swing.JPanel {
             List<HocVien> dsHV = dsKhoaHoc.get(i).getDSHocVien();
             tongSV += dsHV.size();
             tongDoanhThu += dsKhoaHoc.get(i).getGia();
+            tongThuThucTe += dsKhoaHoc.get(i).getSoLuong()[0] * dsKhoaHoc.get(i).getGia();
             TongChiTieu += dsKhoaHoc.get(i).getSoLuong()[1];
             for(var k : dsHV){
                 if(k.getHocLuc().equals("Giỏi")){
@@ -46,7 +48,7 @@ public class pnThongKe extends javax.swing.JPanel {
             data[i][3] = ChiaLamTron(slKha, dsKhoaHoc.get(i).getSoLuong()[0]) * 100 + "%";
             data[i][4] = ChiaLamTron(slKhac, dsKhoaHoc.get(i).getSoLuong()[0]) * 100 + "%";
             data[i][5] = dsKhoaHoc.get(i).getSoLuong()[0] + "/" + dsKhoaHoc.get(i).getSoLuong()[1];
-            data[i][6] = dsKhoaHoc.get(i).getSoLuong()[0] + " x " + dsKhoaHoc.get(i).getGia() + " = " + dsKhoaHoc.get(i).getGia() * dsKhoaHoc.get(i).getSoLuong()[0] + " VND";
+            data[i][6] = dsKhoaHoc.get(i).getGia() * dsKhoaHoc.get(i).getSoLuong()[0] + " VND";
         }
         data[dsKhoaHoc.size()][0] = "";
         data[dsKhoaHoc.size()][1] = "TỔNG CÁC KHÓA HỌC";
@@ -61,9 +63,9 @@ public class pnThongKe extends javax.swing.JPanel {
         tbThongKe.setPreferredSize(new Dimension(665,50*(dsKhoaHoc.size()+1)));
         tbThongKe.setModel(dtm);
         
-        txtDoanhThu.setText(tongDoanhThu + " VND");
-        txtThue.setText("");
-        txtTongDoanhThu.setText("");
+        txtDoanhThu.setText(tongThuThucTe + " VND");
+        txtThue.setText("10%");
+        txtTongDoanhThu.setText((tongThuThucTe-((tongThuThucTe*10)/100))+" VND");
     }
     private double ChiaLamTron(int a, int b){
         return Math.round((a*1.0/b) * 100)*1.0/100;
@@ -72,11 +74,11 @@ public class pnThongKe extends javax.swing.JPanel {
         TableColumnModel tcm = tbThongKe.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(5);
         tcm.getColumn(1).setPreferredWidth(250);
-        tcm.getColumn(2).setPreferredWidth(20);
-        tcm.getColumn(3).setPreferredWidth(20);
-        tcm.getColumn(4).setPreferredWidth(20);
+        tcm.getColumn(2).setPreferredWidth(25);
+        tcm.getColumn(3).setPreferredWidth(25);
+        tcm.getColumn(4).setPreferredWidth(25);
         tcm.getColumn(5).setPreferredWidth(50);
-        tcm.getColumn(6).setPreferredWidth(125);
+        tcm.getColumn(6).setPreferredWidth(70);
     }
     
     @SuppressWarnings("unchecked")

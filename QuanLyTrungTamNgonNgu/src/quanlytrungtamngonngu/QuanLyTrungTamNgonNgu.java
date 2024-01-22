@@ -1,6 +1,7 @@
 package quanlytrungtamngonngu;
 
 import ObjectClass.GiangVien;
+import ObjectClass.HocVien;
 import ObjectClass.KhoaHoc;
 import QuanLyUI.UI;
 import java.io.File;
@@ -66,6 +67,7 @@ public class QuanLyTrungTamNgonNgu {
     "コンピュータで日本語を入力する方法 (Đánh chữ tiếng Nhật trên máy tính)", "会話スキル (Kỹ năng giao tiếp)"
 };
         String[] titles = {"Tiến sĩ", "Giáo sư", "Phó giáo sư", "Giảng viên", "Thạc sĩ"};
+        String[] hocLuc = {"Giỏi", "Khá", "Trung bình", "Kém", "Đang theo dõi","Đã nghỉ học"};
         String[] addresses = {"Hà Nội", "Hồ Chí Minh", "Đà Nẵng", "Nha Trang", "Hải Phòng"};
         String[] ho = {"Nguyễn","Phạm","Trần","Đinh","Phan","Đỗ","Nguyễn","Đặng","Bùi","Trương","Lê","Vũ","Võ","Hoàng","Ngô"};
         String[] tendem = {
@@ -101,11 +103,11 @@ public class QuanLyTrungTamNgonNgu {
             } else if(language.equals("Tiếng Nhật")){
                 tenKH = nameNhat[random.nextInt(nameNhat.length)];
             }
-            
             int price = random.nextInt(200000) + 50000;
             String title = titles[random.nextInt(titles.length)];
             String address = addresses[random.nextInt(addresses.length)];
             int maxStudents = random.nextInt(100) + 1;
+            
             String startDate = generateRandomDate();
             String gioitinh = sex[random.nextInt(sex.length)];
             String name = ho[random.nextInt(ho.length)] + " "+ tendem[random.nextInt(tendem.length)] + " " +
@@ -116,6 +118,17 @@ public class QuanLyTrungTamNgonNgu {
                 generateRandomPhoneNumber(), address, title);
             
             KhoaHoc khoaHoc = new KhoaHoc(language, tenKH, price, giangVien, maxStudents, startDate);
+            
+            for(int j=0; j<maxStudents; j++){
+                String gioiTinhHV = sex[random.nextInt(sex.length)];
+                String namehv = ho[random.nextInt(ho.length)] + " "+ tendem[random.nextInt(tendem.length)] + " " +
+                    (gioiTinhHV.equals("Nam")?maleNames[random.nextInt(maleNames.length)]:
+                    femaleNames[random.nextInt(femaleNames.length)]);
+                int tuoiHV = random.nextInt(36)+4;
+                String adrsHV = addresses[random.nextInt(addresses.length)];
+                String hocLucHV = hocLuc[random.nextInt(hocLuc.length)];
+                khoaHoc.addHocVien(new HocVien(namehv, tuoiHV, gioiTinhHV, generateRandomPhoneNumber(), adrsHV, hocLucHV));
+            }
             
             dsKH.add(khoaHoc);
         }
