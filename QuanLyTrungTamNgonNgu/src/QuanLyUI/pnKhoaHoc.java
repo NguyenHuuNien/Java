@@ -213,7 +213,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     private void btThemKhoaHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemKhoaHocActionPerformed
         KhoaHoc newKhoaHoc = new KhoaHoc();
         UI.addKhoaHoc(newKhoaHoc);
-        UI.changePnController(new pnTTKhoaHoc(newKhoaHoc));
+        UI.changePnController(new pnTTKhoaHoc(newKhoaHoc),"KhoaHoc");
     }//GEN-LAST:event_btThemKhoaHocActionPerformed
 
     private void btThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThanhVienActionPerformed
@@ -223,7 +223,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             int ID = (int)tab.getValueAt(rowSelected, 0);
             for(var o : dsListKH){
                 if(o.getIDKhoaHoc()==ID){
-                    UI.changePnController(new pnThanhVien(o));
+                    UI.changePnController(new pnThanhVien(o),"ThanhVien");
                 }
             }
         }
@@ -241,7 +241,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
                 }
             }
         }
-        UI.changePnController(new pnKhoaHoc());
+        UI.changePnController(new pnKhoaHoc(),"KhoaHoc");
     }//GEN-LAST:event_btXoaActionPerformed
 
     private void txtThongTinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtThongTinActionPerformed
@@ -251,7 +251,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             int ID = (int)tbModel.getValueAt(rowSelect, 0);
             for(var o : dsListKH){
                 if(o.getIDKhoaHoc() == ID){
-                    UI.changePnController(new pnTTKhoaHoc(o));
+                    UI.changePnController(new pnTTKhoaHoc(o),"TTKhoaHoc");
                     return;
                 }
             }

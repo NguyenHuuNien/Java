@@ -157,7 +157,7 @@ public class pnThanhVien extends javax.swing.JPanel {
     private void btChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btChiTietActionPerformed
         int rowSelect = tbThanhVien.getSelectedRow();
         if(rowSelect==0){
-            UI.changePnController(new pnTTGiangVien(kh.getGiangVien(),kh, this));
+            UI.changePnController(new pnTTGiangVien(kh.getGiangVien(),kh, this),"TTGiangVien");
         }
         if(rowSelect<0){
             return;
@@ -167,13 +167,13 @@ public class pnThanhVien extends javax.swing.JPanel {
         String ID = (String)tabModel.getValueAt(rowSelect, 0);
         for(var o : dsHV){
             if(o.getID().equals(ID)){
-                UI.changePnController(new pnTTHocVien(o,kh));
+                UI.changePnController(new pnTTHocVien(o,kh),"TTHocVien");
             }
         }
     }//GEN-LAST:event_btChiTietActionPerformed
 
     private void btThemHocVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemHocVienActionPerformed
-        UI.changePnController(new pnTTHocVien(new HocVien(),kh));
+        UI.changePnController(new pnTTHocVien(new HocVien(),kh),"TTHocVien");
     }//GEN-LAST:event_btThemHocVienActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -188,7 +188,7 @@ public class pnThanhVien extends javax.swing.JPanel {
                 }
             }
         }
-        UI.changePnController(new pnThanhVien(kh));
+        UI.changePnController(new pnThanhVien(kh),"ThanhVien");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void tbThanhVienComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tbThanhVienComponentAdded

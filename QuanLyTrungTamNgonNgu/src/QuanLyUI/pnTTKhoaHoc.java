@@ -291,11 +291,11 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
             }
             khoaHoc.setThoiGian(s);
         }
-        UI.changePnController(new pnKhoaHoc());
+        UI.changePnController(new pnKhoaHoc(),"KhoaHoc");
     }//GEN-LAST:event_btSaveActionPerformed
 
     private void btnAddGVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddGVActionPerformed
-        UI.changePnController(new pnTTGiangVien(gv, khoaHoc,this));
+        UI.changePnController(new pnTTGiangVien(gv, khoaHoc,this),"TTGiangVien");
         txtTenGV.setText(gv.getName());
     }//GEN-LAST:event_btnAddGVActionPerformed
     public void setTenGiangVien(){

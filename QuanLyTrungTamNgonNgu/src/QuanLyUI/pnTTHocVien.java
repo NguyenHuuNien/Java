@@ -314,7 +314,7 @@ public class pnTTHocVien extends javax.swing.JPanel {
         }
     }
     private void ReturnPnThanhVien(){
-        UI.changePnController(new pnThanhVien(khoaHoc));
+        UI.changePnController(new pnThanhVien(khoaHoc),"ThanhVien");
     }
     
     private void rdNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNamActionPerformed

@@ -2,6 +2,9 @@ package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javax.swing.JPanel;
 import saveLoad.SaveLoad;   
@@ -9,11 +12,12 @@ import saveLoad.SaveLoad;
 public class UI extends javax.swing.JFrame {
     private static List<KhoaHoc> dsKH = new ArrayList<>();
     private static List<KhoaHoc> dsKhoaHoc_Loc = new ArrayList<>();
+    private static String nameCurrentJPanel = "KhoaHoc";
     
     public UI() {
         initComponents();
         dsKH = SaveLoad.Load();
-        LocDanhSach("Tất cả");
+        LocDanhSach_NgonNgu();
         pnControl.add(new pnKhoaHoc());
     }
     public static void addKhoaHoc(KhoaHoc newKH){
@@ -22,9 +26,10 @@ public class UI extends javax.swing.JFrame {
     public static List<KhoaHoc> getDSKhoaHoc(){
         return dsKhoaHoc_Loc;
     }
-    public static void changePnController(JPanel newPanel){
+    public static void changePnController(JPanel newPanel, String nameNewJPanel){
         SaveLoad.Save(dsKH);
         pnControl.removeAll();
+        nameCurrentJPanel = nameNewJPanel;
         pnControl.add(newPanel);
         pnControl.revalidate();
         pnControl.repaint();
@@ -33,17 +38,27 @@ public class UI extends javax.swing.JFrame {
         return (String)cbNgonNgu.getSelectedItem();
     }    
 
-    private void LocDanhSach(String text){
+    private void LocDanhSach_NgonNgu(){
+        String text = getNgonNgu();
+        ChangeNameTitle(text);
         if(text.equals("Tất cả")){
-            txtTitle.setText("Thông tin tất cả các khóa học");
             dsKhoaHoc_Loc = dsKH;
         }else{
-            txtTitle.setText("Thông tin các khóa học " + text);
             dsKhoaHoc_Loc = new ArrayList<>();
             for(var o : dsKH){
                 if(o.getNgonNgu().equals(text)){
                     dsKhoaHoc_Loc.add(o);
                 }
+            }
+        }
+    }
+    
+    private void ChangeNameTitle(String newText){
+        if(nameCurrentJPanel.equals("KhoaHoc")||nameCurrentJPanel.equals("ThongKe")){
+            if(newText.equals("Tất cả")){
+                txtTitle.setText("Thông tin tất cả các khóa học");
+            }else{
+                txtTitle.setText("Thông tin các khóa học " + newText);
             }
         }
     }
@@ -57,24 +72,43 @@ public class UI extends javax.swing.JFrame {
         }
         return tmp;
     }
+    private void SapXepKhoaHoc(){
+        if(((String)cbSX.getSelectedItem()).equals("ID")){
+            Collections.sort(dsKH,(a,b) -> Integer.compare(a.getIDKhoaHoc(), b.getIDKhoaHoc()));
+        }else if(((String)cbSX.getSelectedItem()).equals("Tên khóa học")){
+            Collections.sort(dsKH,(a,b) -> String.compare(a.getTenKhoaHoc(), b.getTenKhoaHoc()));
+        }else if(((String)cbSX.getSelectedItem()).equals("Giá")){
+            
+        }
+    }
+    private void SapXepHocVien(){
+        
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         pnTitle = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         pnSpace = new javax.swing.JPanel();
         pnInfor = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        cbNgonNgu = new javax.swing.JComboBox<>();
         pnTitleKhoaHoc = new javax.swing.JPanel();
         txtTitle = new javax.swing.JLabel();
         pnSapXep = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        cbNgonNgu = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        cbSX = new javax.swing.JComboBox<>();
+        jPanel7 = new javax.swing.JPanel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         btOK = new javax.swing.JButton();
         pnSpace2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -108,10 +142,30 @@ public class UI extends javax.swing.JFrame {
         getContentPane().add(pnSpace);
 
         pnInfor.setMinimumSize(new java.awt.Dimension(1, 1));
-        pnInfor.setPreferredSize(new java.awt.Dimension(700, 35));
-        pnInfor.setLayout(new java.awt.GridLayout(1, 0));
+        pnInfor.setPreferredSize(new java.awt.Dimension(700, 45));
+        pnInfor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
 
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 5));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 0));
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Chọn ngôn ngữ:   ");
+        jPanel4.add(jLabel3);
+
+        cbNgonNgu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
+        cbNgonNgu.setPreferredSize(new java.awt.Dimension(115, 35));
+        cbNgonNgu.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbNgonNguItemStateChanged(evt);
+            }
+        });
+        cbNgonNgu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbNgonNguActionPerformed(evt);
+            }
+        });
+        jPanel4.add(cbNgonNgu);
+
         pnInfor.add(jPanel4);
 
         getContentPane().add(pnInfor);
@@ -134,41 +188,50 @@ public class UI extends javax.swing.JFrame {
         pnSapXep.setPreferredSize(new java.awt.Dimension(650, 80));
         pnSapXep.setRequestFocusEnabled(false);
 
+        jPanel1.setPreferredSize(new java.awt.Dimension(200, 35));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+
         jLabel7.setText("Tìm kiếm:");
         jLabel7.setPreferredSize(new java.awt.Dimension(60, 16));
-        pnSapXep.add(jLabel7);
+        jPanel1.add(jLabel7);
 
-        txtSearch.setPreferredSize(new java.awt.Dimension(120, 22));
+        txtSearch.setPreferredSize(new java.awt.Dimension(120, 25));
         txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSearchActionPerformed(evt);
             }
         });
-        pnSapXep.add(txtSearch);
+        jPanel1.add(txtSearch);
 
-        jPanel3.setPreferredSize(new java.awt.Dimension(400, 35));
-        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 10, 0));
+        pnSapXep.add(jPanel1);
 
-        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Chọn khóa học ngôn ngữ:");
-        jPanel3.add(jLabel3);
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 35));
 
-        cbNgonNgu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
-        cbNgonNgu.setPreferredSize(new java.awt.Dimension(115, 35));
-        cbNgonNgu.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbNgonNguItemStateChanged(evt);
-            }
-        });
-        cbNgonNgu.addActionListener(new java.awt.event.ActionListener() {
+        jLabel2.setText("Sắp xếp theo");
+        jPanel2.add(jLabel2);
+
+        cbSX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jPanel2.add(cbSX);
+
+        pnSapXep.add(jPanel2);
+
+        jPanel7.setPreferredSize(new java.awt.Dimension(200, 35));
+        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+
+        buttonGroup1.add(jRadioButton1);
+        jRadioButton1.setText("Tăng");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cbNgonNguActionPerformed(evt);
+                jRadioButton1ActionPerformed(evt);
             }
         });
-        jPanel3.add(cbNgonNgu);
+        jPanel7.add(jRadioButton1);
 
-        pnSapXep.add(jPanel3);
+        buttonGroup1.add(jRadioButton2);
+        jRadioButton2.setText("Giảm");
+        jPanel7.add(jRadioButton2);
+
+        pnSapXep.add(jPanel7);
 
         btOK.setText("OK");
         btOK.addActionListener(new java.awt.event.ActionListener() {
@@ -228,71 +291,52 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UI.changePnController(new pnKhoaHoc());
+        UI.changePnController(new pnKhoaHoc(),"KhoaHoc");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        UI.changePnController(new pnThongKe());
+        UI.changePnController(new pnThongKe(),"ThongKe");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void cbNgonNguItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNgonNguItemStateChanged
-        
+        LocDanhSach_NgonNgu();
+        if(nameCurrentJPanel.equals("KhoaHoc")){
+            changePnController(new pnKhoaHoc(), nameCurrentJPanel);
+        }else if(nameCurrentJPanel.equals("ThongKe")){
+            changePnController(new pnThongKe(), nameCurrentJPanel);
+        }
     }//GEN-LAST:event_cbNgonNguItemStateChanged
 
     private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
         String search = txtSearch.getText();
-        LocDanhSach((String)cbNgonNgu.getSelectedItem());
         dsKhoaHoc_Loc = searchController(dsKhoaHoc_Loc, search);
-        changePnController(new pnKhoaHoc());
+        changePnController(new pnKhoaHoc(),"KhoaHoc");
     }//GEN-LAST:event_btOKActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new UI().setVisible(true);
-//            }
-//        });
-//    }
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btOK;
+    private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JComboBox<String> cbNgonNgu;
+    private javax.swing.JComboBox<String> cbSX;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private static javax.swing.JPanel pnControl;
     private javax.swing.JPanel pnInfor;
     private javax.swing.JPanel pnSapXep;

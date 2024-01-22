@@ -311,10 +311,10 @@ public class pnTTGiangVien extends javax.swing.JPanel {
     private void BackPrevPanel(){
         if(prevCallThisPanel instanceof pnTTKhoaHoc){
             ((pnTTKhoaHoc)prevCallThisPanel).setTenGiangVien();
-            UI.changePnController(prevCallThisPanel);
+            UI.changePnController(prevCallThisPanel,"KhoaHoc");
             return;
         }
-        UI.changePnController(new pnThanhVien(khoaHoc));
+        UI.changePnController(new pnThanhVien(khoaHoc),"ThanhVien");
     }
     
     private void rdNamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdNamActionPerformed
