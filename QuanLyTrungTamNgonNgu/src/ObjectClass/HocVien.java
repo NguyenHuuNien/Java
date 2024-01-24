@@ -14,6 +14,11 @@ public class HocVien extends People implements Serializable{
         this.HocLuc = HocLuc;
     }
 
+    public String getFirstName(){
+        String[] s = this.getName().split(" ");
+        return s[s.length-1];
+        
+    }
     public String getHocLuc() {
         return HocLuc;
     }

@@ -11,7 +11,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     private List<KhoaHoc> dsListKH = UI.getDSKhoaHoc();
     public pnKhoaHoc() {
         initComponents();
-        //SetupTable();
         SetData();
         setSizeColumn();
     }
@@ -39,31 +38,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         }
         tbKhoaHoc.setPreferredSize(new Dimension(550,50*dsListKH.size()));
         tbKhoaHoc.setModel(dtm);
-    }
-    private void SetupTable(){
-        Object[][] data = new Object[dsListKH.size()+1][6];
-        for(int i = 0; i < dsListKH.size(); i++){
-            data[i][0] = dsListKH.get(i).getIDKhoaHoc();
-            data[i][1] = dsListKH.get(i).getTenKhoaHoc();
-            
-            if(dsListKH.get(i).getGiangVien()!=null){
-                data[i][2] = dsListKH.get(i).getGiangVien().getName();
-            }
-            
-            int[] x = dsListKH.get(i).getSoLuong();
-            String s = x[0] + "/" + x[1];
-            data[i][3] = s;
-            
-            data[i][4] = dsListKH.get(i).getThoiGian();
-            
-            String gia = dsListKH.get(i).getGia() + "VND";
-            data[i][5] = gia;
-        }
-        String[] colName = {"ID","Tên","Giảng viên","Số lượng","Ngày","Giá"};
-        DefaultTableModel dfTable = new DefaultTableModel(data, colName);
-        dfTable.setRowCount(dsListKH.size()+1);
-        tbKhoaHoc.setModel(dfTable);
-        System.out.println(data[dsListKH.size()-1][1]);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -223,6 +197,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             int ID = (int)tab.getValueAt(rowSelected, 0);
             for(var o : dsListKH){
                 if(o.getIDKhoaHoc()==ID){
+                    UI.updateModelComboBoxSapXep();
                     UI.changePnController(new pnThanhVien(o),"ThanhVien");
                 }
             }

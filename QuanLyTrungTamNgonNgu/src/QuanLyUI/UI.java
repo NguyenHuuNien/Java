@@ -2,10 +2,9 @@ package QuanLyUI;
 
 import ObjectClass.KhoaHoc;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import saveLoad.SaveLoad;   
 
@@ -33,6 +32,17 @@ public class UI extends javax.swing.JFrame {
         pnControl.add(newPanel);
         pnControl.revalidate();
         pnControl.repaint();
+    }
+    
+    //Ngược vì dùng khi đổi từ ThanhVien -> KhoaHoc và ngược lại
+    public static void updateModelComboBoxSapXep(){
+        if(nameCurrentJPanel.equals("ThanhVien")){
+            DefaultComboBoxModel<String> cbM =  new DefaultComboBoxModel<>(new String[]{"ID khóa học","Tên khóa học","Giá khóa học"});
+            cbSX.setModel(cbM);
+        }else if(nameCurrentJPanel.equals("KhoaHoc")){
+            DefaultComboBoxModel<String> cbM =  new DefaultComboBoxModel<>(new String[]{"ID học viên","Tên học viên","Tuổi học viên"});
+            cbSX.setModel(cbM);
+        }
     }
     public static String getNgonNgu(){
         return (String)cbNgonNgu.getSelectedItem();
@@ -63,8 +73,8 @@ public class UI extends javax.swing.JFrame {
         }
     }
     
-    private List<KhoaHoc> searchController(List<KhoaHoc> ds, String text){
-        List<KhoaHoc> tmp = new ArrayList<>();
+    private <E> List<E> searchController(List<E> ds, String text){
+        List<E> tmp = new ArrayList<>();
         for(var o : ds){
             if((o.toString().toLowerCase()).contains(text.toLowerCase())){
                 tmp.add(o);
@@ -73,16 +83,22 @@ public class UI extends javax.swing.JFrame {
         return tmp;
     }
     private void SapXepKhoaHoc(){
-        if(((String)cbSX.getSelectedItem()).equals("ID")){
-            Collections.sort(dsKH,(a,b) -> Integer.compare(a.getIDKhoaHoc(), b.getIDKhoaHoc()));
+        if(((String)cbSX.getSelectedItem()).equals("ID khóa học")){
+            Collections.sort(dsKhoaHoc_Loc,(a,b) -> Integer.compare(a.getIDKhoaHoc(), b.getIDKhoaHoc()));
         }else if(((String)cbSX.getSelectedItem()).equals("Tên khóa học")){
-            Collections.sort(dsKH,(a,b) -> String.compare(a.getTenKhoaHoc(), b.getTenKhoaHoc()));
-        }else if(((String)cbSX.getSelectedItem()).equals("Giá")){
-            
+            Collections.sort(dsKhoaHoc_Loc,(a,b) -> a.getTenKhoaHoc().compareTo(b.getTenKhoaHoc()));
+        }else if(((String)cbSX.getSelectedItem()).equals("Giá khóa học")){
+            Collections.sort(dsKhoaHoc_Loc, (a,b) -> Integer.compare(a.getGia(), b.getGia()));
         }
     }
     private void SapXepHocVien(){
-        
+        if(((String)cbSX.getSelectedItem()).equals("ID học viên")){
+            Collections.sort(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(),(a,b) -> a.getID().compareTo(b.getID()));
+        }else if(((String)cbSX.getSelectedItem()).equals("Tên học viên")){
+            Collections.sort(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(),(a,b) -> a.getFirstName().compareTo(b.getFirstName()));
+        }else if(((String)cbSX.getSelectedItem()).equals("Tuổi học viên")){
+            Collections.sort(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(), (a,b) -> Integer.compare(a.getTuoi(), b.getTuoi()));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -106,9 +122,6 @@ public class UI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         cbSX = new javax.swing.JComboBox<>();
-        jPanel7 = new javax.swing.JPanel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
         btOK = new javax.swing.JButton();
         pnSpace2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
@@ -187,9 +200,10 @@ public class UI extends javax.swing.JFrame {
         pnSapXep.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnSapXep.setPreferredSize(new java.awt.Dimension(650, 80));
         pnSapXep.setRequestFocusEnabled(false);
+        pnSapXep.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 5));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(200, 35));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
 
         jLabel7.setText("Tìm kiếm:");
         jLabel7.setPreferredSize(new java.awt.Dimension(60, 16));
@@ -210,28 +224,10 @@ public class UI extends javax.swing.JFrame {
         jLabel2.setText("Sắp xếp theo");
         jPanel2.add(jLabel2);
 
-        cbSX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbSX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID khóa học", "Tên khóa học", "Giá khóa học" }));
         jPanel2.add(cbSX);
 
         pnSapXep.add(jPanel2);
-
-        jPanel7.setPreferredSize(new java.awt.Dimension(200, 35));
-        jPanel7.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
-
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Tăng");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
-            }
-        });
-        jPanel7.add(jRadioButton1);
-
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Giảm");
-        jPanel7.add(jRadioButton2);
-
-        pnSapXep.add(jPanel7);
 
         btOK.setText("OK");
         btOK.addActionListener(new java.awt.event.ActionListener() {
@@ -291,6 +287,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        UI.updateModelComboBoxSapXep();
         UI.changePnController(new pnKhoaHoc(),"KhoaHoc");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -309,20 +306,31 @@ public class UI extends javax.swing.JFrame {
 
     private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
         String search = txtSearch.getText();
-        dsKhoaHoc_Loc = searchController(dsKhoaHoc_Loc, search);
-        changePnController(new pnKhoaHoc(),"KhoaHoc");
+        if(nameCurrentJPanel.equals("KhoaHoc")){
+            if(search.isEmpty()){
+                dsKhoaHoc_Loc = dsKH;
+            }else{
+                dsKhoaHoc_Loc = searchController(dsKhoaHoc_Loc, search);
+            }
+            SapXepKhoaHoc();
+            changePnController(new pnKhoaHoc(),"KhoaHoc");
+        }else if(nameCurrentJPanel.equals("ThanhVien")){
+            if(search.isEmpty()){
+                pnThanhVien.setDSHocVien(pnThanhVien.getCurrentKhoaHoc().getDSHocVien());
+            }else{
+                pnThanhVien.setDSHocVien(searchController(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(), search));
+            }
+            SapXepHocVien();
+            changePnController(new pnThanhVien(pnThanhVien.getCurrentKhoaHoc()),"ThanhVien");
+        }
     }//GEN-LAST:event_btOKActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btOK;
     private javax.swing.ButtonGroup buttonGroup1;
     private static javax.swing.JComboBox<String> cbNgonNgu;
-    private javax.swing.JComboBox<String> cbSX;
+    private static javax.swing.JComboBox<String> cbSX;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
@@ -334,9 +342,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private static javax.swing.JPanel pnControl;
     private javax.swing.JPanel pnInfor;
     private javax.swing.JPanel pnSapXep;

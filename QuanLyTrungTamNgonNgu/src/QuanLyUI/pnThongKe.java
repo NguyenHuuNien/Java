@@ -68,7 +68,7 @@ public class pnThongKe extends javax.swing.JPanel {
         txtTongDoanhThu.setText((tongThuThucTe-((tongThuThucTe*10)/100))+" VND");
     }
     private double ChiaLamTron(int a, int b){
-        return Math.round((a*1.0/b) * 100)*1.0/100;
+        return (Math.round((a*1.0/b) * 100))/100.0;
     }
     private void SetSize(){
         TableColumnModel tcm = tbThongKe.getColumnModel();

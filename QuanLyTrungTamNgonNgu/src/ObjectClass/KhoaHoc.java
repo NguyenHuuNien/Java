@@ -46,7 +46,6 @@ public class KhoaHoc implements Serializable{
             return false;
         }
     }
-
     public int getGia() {
         return gia;
     }

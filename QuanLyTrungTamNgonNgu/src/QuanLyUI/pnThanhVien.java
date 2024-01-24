@@ -4,19 +4,27 @@ import ObjectClass.KhoaHoc;
 import java.util.List;
 import ObjectClass.HocVien;
 import java.awt.Dimension;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 
 public class pnThanhVien extends javax.swing.JPanel {
-    private KhoaHoc kh;
-    private List<HocVien> dsHV;
+    private static KhoaHoc kh;
+    private static List<HocVien> dsHV;
+    
     public pnThanhVien(KhoaHoc kh) {
         initComponents();
         this.kh = kh;
         dsHV = kh.getDSHocVien();
         SetupTable();
         resizeTable();
+    }
+    public static void setDSHocVien(List<HocVien> dsNewHV){
+        dsHV = dsNewHV;
+    }
+    public static KhoaHoc getCurrentKhoaHoc(){
+        return kh;
     }
     private void resizeTable(){
         TableColumnModel columnModel = tbThanhVien.getColumnModel();
