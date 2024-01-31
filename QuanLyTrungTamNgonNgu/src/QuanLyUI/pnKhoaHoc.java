@@ -122,10 +122,11 @@ public class pnKhoaHoc extends javax.swing.JPanel {
 
         jPanel2.setMinimumSize(new java.awt.Dimension(600, 23));
         jPanel2.setPreferredSize(new java.awt.Dimension(650, 30));
-        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 0));
+        jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 0));
 
+        btThemKhoaHoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/add.png"))); // NOI18N
         btThemKhoaHoc.setText("Thêm khóa học");
-        btThemKhoaHoc.setPreferredSize(new java.awt.Dimension(130, 23));
+        btThemKhoaHoc.setPreferredSize(new java.awt.Dimension(150, 23));
         btThemKhoaHoc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btThemKhoaHocActionPerformed(evt);
@@ -133,8 +134,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         });
         jPanel2.add(btThemKhoaHoc);
 
+        txtThongTin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/i.png"))); // NOI18N
         txtThongTin.setText("Thông tin");
-        txtThongTin.setPreferredSize(new java.awt.Dimension(100, 23));
+        txtThongTin.setPreferredSize(new java.awt.Dimension(120, 23));
         txtThongTin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtThongTinActionPerformed(evt);
@@ -142,8 +144,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         });
         jPanel2.add(txtThongTin);
 
+        btThanhVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/member.png"))); // NOI18N
         btThanhVien.setText("Thành viên");
-        btThanhVien.setPreferredSize(new java.awt.Dimension(100, 23));
+        btThanhVien.setPreferredSize(new java.awt.Dimension(130, 23));
         btThanhVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btThanhVienActionPerformed(evt);
@@ -151,8 +154,9 @@ public class pnKhoaHoc extends javax.swing.JPanel {
         });
         jPanel2.add(btThanhVien);
 
+        btXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/delete.png"))); // NOI18N
         btXoa.setText("Xóa");
-        btXoa.setPreferredSize(new java.awt.Dimension(100, 23));
+        btXoa.setPreferredSize(new java.awt.Dimension(110, 23));
         btXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btXoaActionPerformed(evt);

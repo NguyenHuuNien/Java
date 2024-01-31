@@ -16,14 +16,18 @@ public class pnThanhVien extends javax.swing.JPanel {
     public pnThanhVien(KhoaHoc kh) {
         initComponents();
         this.kh = kh;
-        dsHV = kh.getDSHocVien();
+        dsHV = new ArrayList<>(kh.getDSHocVien());
         SetupTable();
         resizeTable();
     }
-    public static void setDSHocVien(List<HocVien> dsNewHV){
-        dsHV = dsNewHV;
+    public pnThanhVien(KhoaHoc kh, List<HocVien> dsHVien) {
+        initComponents();
+        this.kh = kh;
+        this.dsHV = dsHVien;
+        SetupTable();
+        resizeTable();
     }
-    public static KhoaHoc getCurrentKhoaHoc(){
+    public static KhoaHoc getKhoaHoc(){
         return kh;
     }
     private void resizeTable(){
@@ -130,6 +134,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(630, 25));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
+        btThemHocVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/add.png"))); // NOI18N
         btThemHocVien.setText("Thêm học viên");
         btThemHocVien.setPreferredSize(new java.awt.Dimension(150, 23));
         btThemHocVien.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +144,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         });
         jPanel1.add(btThemHocVien);
 
+        btChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/i.png"))); // NOI18N
         btChiTiet.setText("Thông tin");
         btChiTiet.setPreferredSize(new java.awt.Dimension(100, 23));
         btChiTiet.addActionListener(new java.awt.event.ActionListener() {
@@ -148,6 +154,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         });
         jPanel1.add(btChiTiet);
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/delete.png"))); // NOI18N
         jButton5.setText("Xóa");
         jButton5.setPreferredSize(new java.awt.Dimension(80, 23));
         jButton5.addActionListener(new java.awt.event.ActionListener() {

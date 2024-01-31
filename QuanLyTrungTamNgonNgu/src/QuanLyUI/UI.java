@@ -1,5 +1,6 @@
 package QuanLyUI;
 
+import ObjectClass.HocVien;
 import ObjectClass.KhoaHoc;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,16 +73,6 @@ public class UI extends javax.swing.JFrame {
             }
         }
     }
-    
-    private <E> List<E> searchController(List<E> ds, String text){
-        List<E> tmp = new ArrayList<>();
-        for(var o : ds){
-            if((o.toString().toLowerCase()).contains(text.toLowerCase())){
-                tmp.add(o);
-            }
-        }
-        return tmp;
-    }
     private void SapXepKhoaHoc(){
         if(((String)cbSX.getSelectedItem()).equals("ID khóa học")){
             Collections.sort(dsKhoaHoc_Loc,(a,b) -> Integer.compare(a.getIDKhoaHoc(), b.getIDKhoaHoc()));
@@ -91,13 +82,13 @@ public class UI extends javax.swing.JFrame {
             Collections.sort(dsKhoaHoc_Loc, (a,b) -> Integer.compare(a.getGia(), b.getGia()));
         }
     }
-    private void SapXepHocVien(){
+    private void SapXepHocVien(List<HocVien> ds){
         if(((String)cbSX.getSelectedItem()).equals("ID học viên")){
-            Collections.sort(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(),(a,b) -> a.getID().compareTo(b.getID()));
+            Collections.sort(ds,(a,b) -> a.getID().compareTo(b.getID()));
         }else if(((String)cbSX.getSelectedItem()).equals("Tên học viên")){
-            Collections.sort(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(),(a,b) -> a.getFirstName().compareTo(b.getFirstName()));
+            Collections.sort(ds,(a,b) -> a.getFirstName().compareTo(b.getFirstName()));
         }else if(((String)cbSX.getSelectedItem()).equals("Tuổi học viên")){
-            Collections.sort(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(), (a,b) -> Integer.compare(a.getTuoi(), b.getTuoi()));
+            Collections.sort(ds, (a,b) -> Integer.compare(a.getTuoi(), b.getTuoi()));
         }
     }
 
@@ -156,13 +147,15 @@ public class UI extends javax.swing.JFrame {
 
         pnInfor.setMinimumSize(new java.awt.Dimension(1, 1));
         pnInfor.setPreferredSize(new java.awt.Dimension(700, 45));
-        pnInfor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 0, 0));
+        pnInfor.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 40, 0));
 
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 20, 0));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 0, 0));
 
         jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 15)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/langauge.png"))); // NOI18N
         jLabel3.setText("Chọn ngôn ngữ:   ");
+        jLabel3.setPreferredSize(new java.awt.Dimension(150, 20));
         jPanel4.add(jLabel3);
 
         cbNgonNgu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Tiếng Việt", "Tiếng Anh", "Tiếng Nhật", "Tiếng Hàn", "Tiếng Trung" }));
@@ -200,13 +193,14 @@ public class UI extends javax.swing.JFrame {
         pnSapXep.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         pnSapXep.setPreferredSize(new java.awt.Dimension(650, 80));
         pnSapXep.setRequestFocusEnabled(false);
-        pnSapXep.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 100, 5));
+        pnSapXep.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 25, 5));
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(200, 35));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 5));
+        jPanel1.setPreferredSize(new java.awt.Dimension(250, 35));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 2, 5));
 
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/search.png"))); // NOI18N
         jLabel7.setText("Tìm kiếm:");
-        jLabel7.setPreferredSize(new java.awt.Dimension(60, 16));
+        jLabel7.setPreferredSize(new java.awt.Dimension(80, 16));
         jPanel1.add(jLabel7);
 
         txtSearch.setPreferredSize(new java.awt.Dimension(120, 25));
@@ -219,9 +213,11 @@ public class UI extends javax.swing.JFrame {
 
         pnSapXep.add(jPanel1);
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(200, 35));
+        jPanel2.setPreferredSize(new java.awt.Dimension(250, 35));
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/sort.png"))); // NOI18N
         jLabel2.setText("Sắp xếp theo");
+        jLabel2.setPreferredSize(new java.awt.Dimension(100, 20));
         jPanel2.add(jLabel2);
 
         cbSX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID khóa học", "Tên khóa học", "Giá khóa học" }));
@@ -229,7 +225,9 @@ public class UI extends javax.swing.JFrame {
 
         pnSapXep.add(jPanel2);
 
+        btOK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ok.png"))); // NOI18N
         btOK.setText("OK");
+        btOK.setPreferredSize(new java.awt.Dimension(80, 25));
         btOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btOKActionPerformed(evt);
@@ -246,8 +244,9 @@ public class UI extends javax.swing.JFrame {
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
 
         jButton3.setBackground(new java.awt.Color(153, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/thongKe.png"))); // NOI18N
         jButton3.setText("Thống kê");
-        jButton3.setPreferredSize(new java.awt.Dimension(100, 30));
+        jButton3.setPreferredSize(new java.awt.Dimension(120, 30));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -260,6 +259,7 @@ public class UI extends javax.swing.JFrame {
         jPanel6.setPreferredSize(new java.awt.Dimension(310, 35));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/home.png"))); // NOI18N
         jButton1.setText("Home");
         jButton1.setPreferredSize(new java.awt.Dimension(100, 30));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -305,23 +305,28 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_cbNgonNguItemStateChanged
 
     private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
-        String search = txtSearch.getText();
-        if(nameCurrentJPanel.equals("KhoaHoc")){
-            if(search.isEmpty()){
-                dsKhoaHoc_Loc = dsKH;
-            }else{
-                dsKhoaHoc_Loc = searchController(dsKhoaHoc_Loc, search);
+        if(nameCurrentJPanel.equals("KhoaHoc")||nameCurrentJPanel.equals("ThongKe")){
+            LocDanhSach_NgonNgu();
+            String text = txtSearch.getText();
+            List<KhoaHoc> dsTmp = new ArrayList<>();
+            for(var o : dsKhoaHoc_Loc){
+                if(o.toString().toLowerCase().contains(text.toLowerCase())){
+                    dsTmp.add(o);
+                }
             }
+            dsKhoaHoc_Loc = dsTmp;
             SapXepKhoaHoc();
-            changePnController(new pnKhoaHoc(),"KhoaHoc");
+            changePnController(new pnKhoaHoc(), "KhoaHoc");
         }else if(nameCurrentJPanel.equals("ThanhVien")){
-            if(search.isEmpty()){
-                pnThanhVien.setDSHocVien(pnThanhVien.getCurrentKhoaHoc().getDSHocVien());
-            }else{
-                pnThanhVien.setDSHocVien(searchController(pnThanhVien.getCurrentKhoaHoc().getDSHocVien(), search));
+            String text = txtSearch.getText();
+            List<HocVien> dsTmp = new ArrayList<>();
+            for(var o : pnThanhVien.getKhoaHoc().getDSHocVien()){
+                if(o.toString().toLowerCase().contains(text.toLowerCase())){
+                    dsTmp.add(o);
+                }
             }
-            SapXepHocVien();
-            changePnController(new pnThanhVien(pnThanhVien.getCurrentKhoaHoc()),"ThanhVien");
+            SapXepHocVien(dsTmp);
+            changePnController(new pnThanhVien(pnThanhVien.getKhoaHoc(),dsTmp), "ThanhVien");
         }
     }//GEN-LAST:event_btOKActionPerformed
 
