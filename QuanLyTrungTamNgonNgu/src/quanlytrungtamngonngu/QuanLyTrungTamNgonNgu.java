@@ -4,14 +4,13 @@ import ObjectClass.GiangVien;
 import ObjectClass.HocVien;
 import ObjectClass.KhoaHoc;
 import QuanLyUI.UI;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import saveLoad.SaveLoad;
 
 public class QuanLyTrungTamNgonNgu {
-    private static File path = new File("data.bin");
+//    private static File path = new File("data.bin");
     
     private static String generateRandomDate() {
         Random random = new Random();
@@ -78,7 +77,7 @@ public class QuanLyTrungTamNgonNgu {
     "Nghệ An", "Ninh Bình", "Ninh Thuận", "Phú Thọ", "Phú Yên", "Quảng Bình", 
     "Quảng Nam", "Quảng Ngãi", "Quảng Ninh", "Quảng Trị", "Sóc Trăng", "Sơn La", 
     "Tây Ninh", "Thái Bình", "Thái Nguyên", "Thanh Hóa", "Thừa Thiên-Huế", "Tiền Giang", 
-    "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái", "Đắk Nông"
+    "Trà Vinh", "Tuyên Quang", "Vĩnh Long", "Vĩnh Phúc", "Yên Bái", "Đắk Nông","Nước ngoài"
 };
 
         String[] ho = {"Nguyễn","Phạm","Trần","Đinh","Phan","Đỗ","Nguyễn","Đặng","Bùi","Trương","Lê","Vũ","Võ","Hoàng","Ngô"};

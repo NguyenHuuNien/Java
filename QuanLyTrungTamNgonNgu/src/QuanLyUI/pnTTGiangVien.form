@@ -315,7 +315,7 @@
             <Component class="javax.swing.JComboBox" name="cbAddress">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="63">
+                  <StringArray count="64">
                     <StringItem index="0" value="An Giang"/>
                     <StringItem index="1" value="B&#xe0; R&#x1ecb;a - V&#x169;ng T&#xe0;u"/>
                     <StringItem index="2" value="B&#x1ea1;c Li&#xea;u"/>
@@ -379,9 +379,9 @@
                     <StringItem index="60" value="V&#x129;nh Ph&#xfa;c"/>
                     <StringItem index="61" value="Y&#xea;n B&#xe1;i"/>
                     <StringItem index="62" value="&#x110;&#x1eaf;k N&#xf4;ng"/>
+                    <StringItem index="63" value="N&#x1b0;&#x1edb;c ngo&#xe0;i"/>
                   </StringArray>
                 </Property>
-                <Property name="selectedIndex" type="int" value="-1"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[200, 35]"/>
                 </Property>

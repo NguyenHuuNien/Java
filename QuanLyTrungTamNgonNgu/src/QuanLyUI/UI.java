@@ -27,11 +27,12 @@ public class UI extends javax.swing.JFrame {
         return dsKhoaHoc_Loc;
     }
     public static void changePnController(JPanel newPanel, String nameNewJPanel){
-        SaveLoad.Save(dsKH);
-        pnControl.removeAll();
-        nameCurrentJPanel = nameNewJPanel;
-        pnControl.add(newPanel);
-        pnControl.revalidate();
+        SaveLoad.Save(dsKH);  // Lưu data mỗi lần thay đổi
+        pnControl.removeAll(); // xóa JPanel đang hiển thị
+        nameCurrentJPanel = nameNewJPanel; // Lưu lại tên của Chức năng chuẩn bị chuyển
+        pnControl.add(newPanel); // thêm vào JPanel muốn hiển thị
+        // Thông báo có sự thay đổi và yêu cầu pnControl load lại
+        pnControl.revalidate(); 
         pnControl.repaint();
     }
     
@@ -114,7 +115,7 @@ public class UI extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbSX = new javax.swing.JComboBox<>();
         btOK = new javax.swing.JButton();
-        pnSpace2 = new javax.swing.JPanel();
+        pnCongCu = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -237,8 +238,8 @@ public class UI extends javax.swing.JFrame {
 
         getContentPane().add(pnSapXep);
 
-        pnSpace2.setPreferredSize(new java.awt.Dimension(620, 35));
-        pnSpace2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 3));
+        pnCongCu.setPreferredSize(new java.awt.Dimension(620, 35));
+        pnCongCu.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 3));
 
         jPanel5.setPreferredSize(new java.awt.Dimension(310, 35));
         jPanel5.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 0));
@@ -254,7 +255,7 @@ public class UI extends javax.swing.JFrame {
         });
         jPanel5.add(jButton3);
 
-        pnSpace2.add(jPanel5);
+        pnCongCu.add(jPanel5);
 
         jPanel6.setPreferredSize(new java.awt.Dimension(310, 35));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 5, 0));
@@ -269,9 +270,9 @@ public class UI extends javax.swing.JFrame {
         });
         jPanel6.add(jButton1);
 
-        pnSpace2.add(jPanel6);
+        pnCongCu.add(jPanel6);
 
-        getContentPane().add(pnSpace2);
+        getContentPane().add(pnCongCu);
         getContentPane().add(pnControl);
 
         pack();
@@ -347,11 +348,11 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel pnCongCu;
     private static javax.swing.JPanel pnControl;
     private javax.swing.JPanel pnInfor;
     private javax.swing.JPanel pnSapXep;
     private javax.swing.JPanel pnSpace;
-    private javax.swing.JPanel pnSpace2;
     private javax.swing.JPanel pnTitle;
     private javax.swing.JPanel pnTitleKhoaHoc;
     private javax.swing.JTextField txtSearch;
