@@ -30,19 +30,21 @@ public class UI extends javax.swing.JFrame {
         SaveLoad.Save(dsKH);  // Lưu data mỗi lần thay đổi
         pnControl.removeAll(); // xóa JPanel đang hiển thị
         nameCurrentJPanel = nameNewJPanel; // Lưu lại tên của Chức năng chuẩn bị chuyển
+        updateModelComboBoxSapXep(); // thay đổi trường giá trị sắp xếp
         pnControl.add(newPanel); // thêm vào JPanel muốn hiển thị
         // Thông báo có sự thay đổi và yêu cầu pnControl load lại
         pnControl.revalidate(); 
         pnControl.repaint();
     }
     
-    //Ngược vì dùng khi đổi từ ThanhVien -> KhoaHoc và ngược lại
     public static void updateModelComboBoxSapXep(){
-        if(nameCurrentJPanel.equals("ThanhVien")){
-            DefaultComboBoxModel<String> cbM =  new DefaultComboBoxModel<>(new String[]{"ID khóa học","Tên khóa học","Giá khóa học"});
+        if(nameCurrentJPanel.equals("KhoaHoc")){
+            DefaultComboBoxModel<String> cbM =  
+                    new DefaultComboBoxModel<>(new String[]{"ID khóa học","Tên khóa học","Giá khóa học"});
             cbSX.setModel(cbM);
-        }else if(nameCurrentJPanel.equals("KhoaHoc")){
-            DefaultComboBoxModel<String> cbM =  new DefaultComboBoxModel<>(new String[]{"ID học viên","Tên học viên","Tuổi học viên"});
+        }else if(nameCurrentJPanel.equals("ThanhVien")){
+            DefaultComboBoxModel<String> cbM =  
+                    new DefaultComboBoxModel<>(new String[]{"ID học viên","Tên học viên","Tuổi học viên"});
             cbSX.setModel(cbM);
         }
     }
@@ -288,7 +290,6 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSearchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        UI.updateModelComboBoxSapXep();
         UI.changePnController(new pnKhoaHoc(),"KhoaHoc");
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -298,6 +299,7 @@ public class UI extends javax.swing.JFrame {
 
     private void cbNgonNguItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbNgonNguItemStateChanged
         LocDanhSach_NgonNgu();
+        LocSapXepButtonOK();
         if(nameCurrentJPanel.equals("KhoaHoc")){
             changePnController(new pnKhoaHoc(), nameCurrentJPanel);
         }else if(nameCurrentJPanel.equals("ThongKe")){
@@ -305,7 +307,7 @@ public class UI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_cbNgonNguItemStateChanged
 
-    private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
+    private void LocSapXepButtonOK(){
         if(nameCurrentJPanel.equals("KhoaHoc")||nameCurrentJPanel.equals("ThongKe")){
             LocDanhSach_NgonNgu();
             String text = txtSearch.getText();
@@ -329,6 +331,10 @@ public class UI extends javax.swing.JFrame {
             SapXepHocVien(dsTmp);
             changePnController(new pnThanhVien(pnThanhVien.getKhoaHoc(),dsTmp), "ThanhVien");
         }
+    }
+    
+    private void btOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btOKActionPerformed
+        LocSapXepButtonOK();
     }//GEN-LAST:event_btOKActionPerformed
 
 
