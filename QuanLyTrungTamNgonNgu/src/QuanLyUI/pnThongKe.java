@@ -15,7 +15,6 @@ public class pnThongKe extends javax.swing.JPanel {
         ThongKeBang();
         SetSize();
     }
-    
     private void ThongKeBang(){
         int TslGioi = 0, TslKha = 0, TslKhac = 0;
         int TongChiTieu = 0;
