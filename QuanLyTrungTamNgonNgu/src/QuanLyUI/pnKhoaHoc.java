@@ -189,9 +189,7 @@ public class pnKhoaHoc extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btThemKhoaHocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThemKhoaHocActionPerformed
-        KhoaHoc newKhoaHoc = new KhoaHoc();
-        UI.addKhoaHoc(newKhoaHoc);
-        UI.changePnController(new pnTTKhoaHoc(newKhoaHoc),"KhoaHoc");
+        UI.changePnController(new pnTTKhoaHoc(),"KhoaHoc");
     }//GEN-LAST:event_btThemKhoaHocActionPerformed
 
     private void btThanhVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btThanhVienActionPerformed
