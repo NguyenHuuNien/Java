@@ -6,15 +6,21 @@ import ObjectClass.KhoaHoc;
 public class pnTTKhoaHoc extends javax.swing.JPanel {
     private GiangVien gv ;
     private KhoaHoc khoaHoc;
+    public pnTTKhoaHoc(){
+        initComponents();
+        khoaHoc = new KhoaHoc();
+        gv = new GiangVien();
+        setData();
+        txtID.setText(khoaHoc.getIDKhoaHoc()+"");
+        if(khoaHoc.getGiangVien() != null){
+            UI.getDSKhoaHoc().add(khoaHoc);
+        }
+    }
     public pnTTKhoaHoc(KhoaHoc kh) {
         initComponents();
         khoaHoc = kh;
-        if(khoaHoc.getGiangVien()==null){
-            gv = new GiangVien();
-        }else{
-            gv = khoaHoc.getGiangVien();
-            setData();
-        }
+        gv = khoaHoc.getGiangVien();
+        setData();
         txtID.setText(khoaHoc.getIDKhoaHoc()+"");
     }
     @SuppressWarnings("unchecked")
