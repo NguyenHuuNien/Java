@@ -244,14 +244,12 @@ public class pnTTHocVien extends javax.swing.JPanel {
             txtName.setText(result.toString().trim());
             a.setName(txtName.getText());
         }
-        
         if(!rdNam.isSelected() && !rdNu.isSelected()){
             txtError.setText("Vui lòng chọn giới tính!");
             return;
         }else{
             a.setGioiTinh(rdNam.isSelected()?"Nam":"Nữ");
         }
-        
         if(txtAge.getText().equals("")){
             txtError.setText("Vui lòng nhập tuổi!");
             return;
@@ -270,7 +268,6 @@ public class pnTTHocVien extends javax.swing.JPanel {
             }
             a.setTuoi(tuoi);
         }
-        
         String sdt = txtNumberPhone.getText();
         for(int i=0;i<sdt.length();i++){
             if(sdt.charAt(i)<'0' || sdt.charAt(i)>'9'){
@@ -283,14 +280,12 @@ public class pnTTHocVien extends javax.swing.JPanel {
             return;
         }
         a.setSoDienThoai(sdt);
-        
         if(cbAddress.getSelectedIndex()<0){
             txtError.setText("Vui lòng chọn quê quán!");
             return;
         }else{
             a.setQueQuan((String)cbAddress.getSelectedItem());
         }
-        
         if(cbNangLuc.getSelectedIndex()<0){
             txtError.setText("Vui lòng chọn học lực!");
             return;
@@ -304,11 +299,11 @@ public class pnTTHocVien extends javax.swing.JPanel {
     private void CheckDaCoChua(){
         for(var o : khoaHoc.getDSHocVien()){
             if(o.getID().equals(a.getID())){
-                return;
+                return; // nếu có học viên này rồi (tức là chỉ xem hoặc sửa thôi) -> không thêm lại
             }
         }
-        boolean check = khoaHoc.addHocVien(a);
-        if(!check){
+        boolean check = khoaHoc.addHocVien(a); // thêm a vào danh sách
+        if(!check){ // nếu lớp đã đầy -> thông báo thêm thất bại
             JOptionPane.showMessageDialog(null,"Lớp học đã đủ thành viên - Không thể thêm!");
         }
     }
