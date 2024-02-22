@@ -199,7 +199,6 @@ public class pnKhoaHoc extends javax.swing.JPanel {
             int ID = (int)tab.getValueAt(rowSelected, 0);
             for(var o : dsListKH){
                 if(o.getIDKhoaHoc()==ID){
-                    UI.updateModelComboBoxSapXep();
                     UI.changePnController(new pnThanhVien(o),"ThanhVien");
                 }
             }
