@@ -9,7 +9,7 @@ public class HocVien extends People implements Serializable{
         super("HV");
     }
 
-    public HocVien(String Name, int Tuoi, String gioiTinh,String SoDienThoai, String QueQuan, String HocLuc) {
+    public HocVien(String Name, int Tuoi,String gioiTinh,String SoDienThoai,String QueQuan,String HocLuc) {
         super("HV",Name, Tuoi,gioiTinh, SoDienThoai, QueQuan);
         this.HocLuc = HocLuc;
     }
