@@ -76,7 +76,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         btThemHocVien = new javax.swing.JButton();
         btChiTiet = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btXoa = new javax.swing.JButton();
 
         java.awt.FlowLayout flowLayout2 = new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 50, 2);
         flowLayout2.setAlignOnBaseline(true);
@@ -154,15 +154,15 @@ public class pnThanhVien extends javax.swing.JPanel {
         });
         jPanel1.add(btChiTiet);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/delete.png"))); // NOI18N
-        jButton5.setText("Xóa");
-        jButton5.setPreferredSize(new java.awt.Dimension(80, 23));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/delete.png"))); // NOI18N
+        btXoa.setText("Xóa");
+        btXoa.setPreferredSize(new java.awt.Dimension(80, 23));
+        btXoa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btXoaActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton5);
+        jPanel1.add(btXoa);
 
         pnTable.add(jPanel1);
 
@@ -191,7 +191,7 @@ public class pnThanhVien extends javax.swing.JPanel {
         UI.changePnController(new pnTTHocVien(new HocVien(),kh),"TTHocVien");
     }//GEN-LAST:event_btThemHocVienActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btXoaActionPerformed
         int rowSelect = tbThanhVien.getSelectedRow();
         if(rowSelect != -1){
             TableModel tab = tbThanhVien.getModel();
@@ -204,7 +204,7 @@ public class pnThanhVien extends javax.swing.JPanel {
             }
         }
         UI.changePnController(new pnThanhVien(kh),"ThanhVien");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btXoaActionPerformed
 
     private void tbThanhVienComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_tbThanhVienComponentAdded
         // TODO add your handling code here:
@@ -214,7 +214,7 @@ public class pnThanhVien extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btChiTiet;
     private javax.swing.JButton btThemHocVien;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton btXoa;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel pnTable;
