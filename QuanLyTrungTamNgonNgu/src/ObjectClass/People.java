@@ -73,5 +73,4 @@ public class People implements Serializable{
         String s = this.ID + this.Name + this.QueQuan + this.SoDienThoai + this.gioiTinh + this.Tuoi;
         return s;
     }
-    
 }
