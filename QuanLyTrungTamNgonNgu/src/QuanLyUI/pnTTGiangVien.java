@@ -242,14 +242,12 @@ public class pnTTGiangVien extends javax.swing.JPanel {
             txtName.setText(result.toString().trim());
             gv.setName(txtName.getText());
         }
-        
         if(!rdNam.isSelected() && !rdNu.isSelected()){
             txtError.setText("Vui lòng chọn giới tính!");
             return;
         }else{
             gv.setGioiTinh(rdNam.isSelected()?"Nam":"Nữ");
         }
-        
         if(txtAge.getText().equals("")){
             txtError.setText("Vui lòng nhập tuổi!");
             return;
@@ -268,7 +266,6 @@ public class pnTTGiangVien extends javax.swing.JPanel {
             }
             gv.setTuoi(tuoi);
         }
-        
         String sdt = txtNumberPhone.getText();
         for(int i=0;i<sdt.length();i++){
             if(sdt.charAt(i)<'0' || sdt.charAt(i)>'9'){
@@ -281,7 +278,6 @@ public class pnTTGiangVien extends javax.swing.JPanel {
             return;
         }
         gv.setSoDienThoai(sdt);
-        
         if(cbAddress.getSelectedIndex()<0){
             txtError.setText("Vui lòng chọn quê quán!");
             return;
