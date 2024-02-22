@@ -232,14 +232,12 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
         }else{
             khoaHoc.setTenKhoaHoc(txtName.getText());
         }
-        
         if(gv.getName() != null){
             khoaHoc.setGiangVien(gv);
         }else{
             txtError.setText("Vui lòng nhập giảng viên!");
             return;
         }
-        
         if(txtGia.getText().length()<1){
             txtError.setText("Vui lòng lại nhập số tiền!");
             return;
@@ -252,13 +250,11 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
             }
             khoaHoc.setGia(Integer.parseInt(txtGia.getText()));
         }
-        
         if(cbNgonNgu.getSelectedIndex() != -1){
             khoaHoc.setNgonNgu((String)cbNgonNgu.getSelectedItem());
         }else{
             txtError.setText("Vui lòng chọn ngôn ngữ cho khóa học!");
         }
-        
         for(int i=0;i<txtMaxNum.getText().length();i++){
                 if(txtMaxNum.getText().charAt(i)>'9' || txtMaxNum.getText().charAt(i) < '0' ){
                     txtError.setText("Vui lòng nhập đúng định dạng số lượng học viên!");
@@ -271,7 +267,6 @@ public class pnTTKhoaHoc extends javax.swing.JPanel {
         }else{
             khoaHoc.setMaxSoLuong(Integer.parseInt(txtMaxNum.getText()));
         }
-        
         if(txtDayBegin.getText().length()!=10){
             txtError.setText("Vui lòng nhập lại ngày bắt đầu!");
         }else{
